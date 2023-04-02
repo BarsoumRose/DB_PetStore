@@ -1,38 +1,256 @@
 .App {
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+h2 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.store {
+  display:flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color:white;
+ 
 }
 
-.App-link {
-  color: #61dafb;
+.store input {
+  width: 300px;
+  height:50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+.worksIn {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
 }
+
+.worksIn input {
+  width: 300px;
+  height:50px;
+}
+
+.employee {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+ 
+}
+
+.employee input {
+  width: 300px;
+  height:50px;
+}
+
+.animalCare {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
+}
+
+.animalCare input {
+  width: 300px;
+  height:50px;
+}
+
+.cashierRetail {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
+}
+
+.cashierRetail input {
+  width: 300px;
+  height:50px;
+}
+
+.soldIn {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+ 
+}
+
+.soldIn input {
+  width: 300px;
+  height:50px;
+}
+
+.merchandise {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
+}
+
+.merchandise input {
+  width: 300px;
+  height:50px;
+}
+
+.includes {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+ 
+}
+
+.includes input {
+  width: 300px;
+  height:50px;
+}
+
+.animals {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
+}
+
+.animals input {
+  width: 300px;
+  height:50px;
+}
+
+.items {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+ 
+}
+
+.items input {
+  width: 300px;
+  height:50px;
+}
+
+.food {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
+}
+
+.food input {
+  width: 300px;
+  height:50px;
+}
+
+.enclosure {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+ 
+}
+
+.enclosure input {
+  width: 300px;
+  height:50px;
+}
+
+.toys {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
+}
+
+.toys input {
+  width: 300px;
+  height:50px;
+}
+
+.isFor {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+ 
+}
+
+.isFor input {
+  width: 300px;
+  height:50px;
+}
+
+.compatibleWith {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:grey;
+ 
+}
+
+.compatibleWith input {
+  width: 300px;
+  height:50px;
+}
+
+.isQualified {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+ 
+}
+
+.isQualified input {
+  width: 300px;
+  height:50px;
+}
+
+
+
+
