@@ -31,9 +31,13 @@ h2 {
 }
 
 .store button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
+}
+
+.store button:hover {
+  cursor: pointer;
 }
 
 
@@ -57,10 +61,15 @@ h2 {
 }
 
 .worksIn button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.worksIn button:hover {
+  cursor: pointer;
+}
+
 
 .employee {
   display:flex;
@@ -82,10 +91,15 @@ h2 {
 }
 
 .employee button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.employee button:hover {
+  cursor: pointer;
+}
+
 
 
 .animalCare {
@@ -107,10 +121,15 @@ h2 {
 }
 
 .animalCare button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.animalCare button:hover {
+  cursor: pointer;
+}
+
 
 .cashierRetail {
   display:flex;
@@ -131,10 +150,15 @@ h2 {
 }
 
 .cashierRetail button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.cashierRetail button:hover {
+  cursor: pointer;
+}
+
 
 .soldIn {
   display:flex;
@@ -155,10 +179,15 @@ h2 {
 }
 
 .soldIn button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.soldIn button:hover {
+  cursor: pointer;
+}
+
 
 .merchandise {
   display:flex;
@@ -179,10 +208,15 @@ h2 {
 }
 
 .merchandise button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.merchandise button:hover {
+  cursor: pointer;
+}
+
 
 .includes {
   display:flex;
@@ -203,10 +237,15 @@ h2 {
 }
 
 .includes button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.includes button:hover {
+  cursor: pointer;
+}
+
 
 .animals {
   display:flex;
@@ -227,9 +266,13 @@ h2 {
 }
 
 .animals button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
+}
+
+.animals button:hover {
+  cursor: pointer;
 }
 
 .items {
@@ -251,10 +294,15 @@ h2 {
 }
 
 .items button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.items button:hover {
+  cursor: pointer;
+}
+
 
 .food {
   display:flex;
@@ -275,10 +323,15 @@ h2 {
 }
 
 .food button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.food button:hover {
+  cursor: pointer;
+}
+
 
 .enclosure {
   display:flex;
@@ -299,10 +352,15 @@ h2 {
 }
 
 .enclosure button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.enclosure button:hover {
+  cursor: pointer;
+}
+
 
 .toys {
   display:flex;
@@ -323,10 +381,15 @@ h2 {
 }
 
 .toys button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.toys button:hover {
+  cursor: pointer;
+}
+
 
 .isFor {
   display:flex;
@@ -347,10 +410,15 @@ h2 {
 }
 
 .isFor button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.isFor button:hover {
+  cursor: pointer;
+}
+
 
 .compatibleWith {
   display:flex;
@@ -371,10 +439,15 @@ h2 {
 }
 
 .compatibleWith button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.compatibleWith button:hover {
+  cursor: pointer;
+}
+
 
 .isQualified {
   display:flex;
@@ -395,10 +468,15 @@ h2 {
 }
 
 .isQualified button {
-  width: 300px;
+  width: 320px;
   height:50px;
   margin-top: 15px;
 }
+
+.isQualified button:hover {
+  cursor: pointer;
+}
+
 
 
 
