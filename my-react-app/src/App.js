@@ -13,6 +13,7 @@ function App() {
         <input type="text"/>
         <label>Address</label>
         <input type="text"/>
+        <button>Add Store</button>
       </div>
       
       
@@ -22,6 +23,7 @@ function App() {
         <input type="text"/>
         <label>EID</label>
         <input type="text"/>
+        <button>Add Works In Relation</button>
       </div>
       
       
@@ -35,6 +37,7 @@ function App() {
         <input type="number"/>
         <label>EID</label>
         <input type="text"/>
+        <button>Add Employee</button>
       </div>
 
       
@@ -50,6 +53,7 @@ function App() {
         <input type="text"/>
         <label>Specialty</label>
         <input type="text"/>
+        <button>Add Animal Care</button>
       </div>
 
       
@@ -65,6 +69,7 @@ function App() {
         <input type="text"/>
         <label>Part Time?</label>
         <input type="checkbox"/>
+        <button>Add Cashier/Retail Employee</button>
       </div>
 
       <h2>Sold In</h2>
@@ -77,6 +82,7 @@ function App() {
         <input type="text"/>
         <label>SID</label>
         <input type="text"/>
+        <button>Add Sold In Relation</button>
       </div>
 
       <h2>Merchandise</h2>
@@ -85,6 +91,7 @@ function App() {
         <input type="number"/>
         <label>MID</label>
         <input type="text"/>
+        <button>Add Merchandise</button>
       </div>
 
       <h2>Includes</h2>
@@ -95,6 +102,7 @@ function App() {
         <input type="text"/>
         <label>AID</label>
         <input type="text"/>
+        <button>Add Includes Relation</button>
       </div>
 
       <h2>Animals</h2>
@@ -115,6 +123,7 @@ function App() {
         <input type="text"/>
         <label>Care Guide</label>
         <input type="text"/>
+        <button>Add Animal</button>
       </div>
 
       <h2>Items</h2>
@@ -123,6 +132,7 @@ function App() {
         <input type="text"/>
         <label>Brand</label>
         <input type="text"/>
+        <button>Add Items</button>
       </div>
 
       <h2>Food</h2>
@@ -137,6 +147,7 @@ function App() {
         <input type="checkbox"/>
         <label>is Alive?</label>
         <input type="checkbox"/>
+        <button>Add Food</button>
       </div>
    
       <h2>Enclosure</h2>
@@ -147,6 +158,7 @@ function App() {
         <input type="text"/>
         <label>dimensions</label>
         <input type="text"/>
+        <button>Add Enclosure</button>
       </div>
 
       <h2>Toys</h2>
@@ -159,20 +171,23 @@ function App() {
         <input type="text"/>
         <label>is chocking Hazard?</label>
         <input type="checkbox"/>
+        <button>Add Toys</button>
       </div>
 
-      <h2>is For</h2>
+      <h2>Is For</h2>
       <div className="isFor">
         <label>IID</label>
         <input type="text"/>
         <label>AID</label>
         <input type="text"/>
+        <button>Add is For Relation</button>
       </div>
       
-      <h2>compatible With</h2>
+      <h2>Compatible With</h2>
       <div className="compatibleWith">
         <label>AID</label>
         <input type="text"/>
+        <button>Add Compatible With Relation</button>
       </div>
 
       <h2>Is Qualified</h2>
@@ -181,6 +196,7 @@ function App() {
         <input type="text"/>
         <label>AnimalCareID</label>
         <input type="text"/>
+        <button>Add is Qualified Relation</button>
       </div>
 
     </div>
