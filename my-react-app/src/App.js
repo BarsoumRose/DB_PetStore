@@ -4,23 +4,76 @@ import {useState} from "react";
 
 function App() {
   
-  const [SID, setSID, phoneNumber, setPhoneNumber, address, setAddress] = useState("", "", ""); //store
-  const [worksInSID, setworksInSID, worksInEID, setworksInEID]= useState("", "");//works in
-  const [Fname, setFname, Lname, setLname, Salary, setSalary, EID, setEID] = useState("", "", 0 , ""); //employee
-  const [careFname, setcareFname, careLname, setcareLname, careSalary, setCareSalary, careEID, setcareEID, specialty, setSpecialty] = useState("", "", 0 , "", ""); // animal care
-  const [retailFname, setRetailFname, retailLname, setRetailLname, retailSalary, setRetailSalary, retailEID, setRetailEID, partTime, setPartTime] = useState("", "", 0 , "",false);//cashier/Retail
-  const [numInStock, setNumInStock, shelvingLocation, setShelvingLocation, soldInMID, setSoldInMID, soldInSID, setSoldInSID] = useState( 0 , "", "", "");//sold in
-  const [price, setPrice, MID, setMID] = useState(0, "");//merchandise
-  const [includesMID, setIncludesMID, includesIID, setIncludesIID, includesAID, setIncludesAID] = useState("", "", "");//includes
-  const [hypoallergenic, setHypoallergenic, maxSize, setMaxSize, enclosureType, setEnclosureType, animalFood, setAnimalFood, species, setSpecies,lifespan,setLifespan,AID,setAID,careGuide,setCareGuide] = useState(false, 0 , "", "", "","","","");//animals
-  const [IID, setIID, brand, setBrand] = useState("", "");//items
-  const [foodIID, setFoodIID, foodBrand, setFoodBrand, shelfLife, setShelfLife, needsRefridge, setNeedsRefridge,isAlive,setIsAlive] = useState("", "", "", false, false);//food
-  const [enclosureIID, setEnclosureIID, enclosureBrand, setEnclosureBrand, dimensions, setDimensions] = useState("", "", "");//enclosure
-  const [toysIID, setToysIID, toysBrand, setToysBrand, type, setType, chokingHazard, setChokingHazard] = useState("", "", "", false);//toys
-  const [isForIID, setIsForIID, isForAID, setIsForAID] = useState("", "");//isfor
-  const [compatibleAID, setCompatibleAID] = useState("");//compatible with
-  const [qualifiedAID, setQualifiedAID, AnimalCareID, setAnimalCareID] = useState("", "");//is qualified
+const [SID, setSID] = useState("");
+const [phoneNumber, setPhoneNumber] = useState("");
+const [address, setAddress] = useState("");
 
+const [worksInSID, setWorksInSID] = useState("");
+const [worksInEID, setWorksInEID] = useState("");
+
+const [Fname, setFname] = useState("");
+const [Lname, setLname] = useState("");
+const [Salary, setSalary] = useState(0);
+const [EID, setEID] = useState("");
+
+const [careFname, setCareFname] = useState("");
+const [careLname, setCareLname] = useState("");
+const [careSalary, setCareSalary] = useState(0);
+const [careEID, setCareEID] = useState("");
+const [specialty, setSpecialty] = useState("");
+
+const [retailFname, setRetailFname] = useState("");
+const [retailLname, setRetailLname] = useState("");
+const [retailSalary, setRetailSalary] = useState(0);
+const [retailEID, setRetailEID] = useState("");
+const [partTime, setPartTime] = useState(false);
+
+const [numInStock, setNumInStock] = useState(0);
+const [shelvingLocation, setShelvingLocation] = useState("");
+const [soldInMID, setSoldInMID] = useState("");
+const [soldInSID, setSoldInSID] = useState("");
+
+const [price, setPrice] = useState(0);
+const [MID, setMID] = useState("");
+
+const [includesMID, setIncludesMID] = useState("");
+const [includesIID, setIncludesIID] = useState("");
+const [includesAID, setIncludesAID] = useState("");
+
+const [hypoallergenic, setHypoallergenic] = useState(false);
+const [maxSize, setMaxSize] = useState(0);
+const [enclosureType, setEnclosureType] = useState("");
+const [animalFood, setAnimalFood] = useState("");
+const [species, setSpecies] = useState("");
+const [lifespan, setLifespan] = useState("");
+const [AID, setAID] = useState("");
+const [careGuide, setCareGuide] = useState("");
+
+const [IID, setIID] = useState("");
+const [brand, setBrand] = useState("");
+
+const [foodIID, setFoodIID] = useState("");
+const [foodBrand, setFoodBrand] = useState("");
+const [shelfLife, setShelfLife] = useState("");
+const [needsRefridge, setNeedsRefridge] = useState(false);
+const [isAlive, setIsAlive] = useState(false);
+
+const [enclosureIID, setEnclosureIID] = useState("");
+const [enclosureBrand, setEnclosureBrand] = useState("");
+const [dimensions, setDimensions] = useState("");
+
+const [toysIID, setToysIID] = useState("");
+const [toysBrand, setToysBrand] = useState("");
+const [type, setType] = useState("");
+const [chokingHazard, setChokingHazard] = useState(false);
+
+const [isForIID, setIsForIID] = useState("");
+const [isForAID, setIsForAID] = useState("");
+
+const [compatibleAID, setCompatibleAID] = useState("");
+
+const [qualifiedAID, setQualifiedAID] = useState("");
+const [AnimalCareID, setAnimalCareID] = useState("");
 
 
 return (
@@ -54,13 +107,13 @@ return (
         <label>SID</label>
         <input type="text"
         onChange={(event) => {
-          setworksInSID(event.target.value);
+          setWorksInSID(event.target.value);
         }}
         />
         <label>EID</label>
         <input type="text"
         onChange={(event) => {
-          setworksInEID(event.target.value);
+          setWorksInEID(event.target.value);
         }}
         />
         <button>Add Works In Relation</button>
@@ -102,13 +155,13 @@ return (
         <label>Fname</label>
         <input type="text"
         onChange={(event) => {
-          setcareFname(event.target.value);
+          setCareFname(event.target.value);
         }}
         />
         <label>Lname</label>
         <input type="text"
         onChange={(event) => {
-          setcareLname(event.target.value);
+          setCareLname(event.target.value);
         }}
         />
         <label>Salary</label>
@@ -120,7 +173,7 @@ return (
         <label>EID</label>
         <input type="text"
         onChange={(event) => {
-          setcareEID(event.target.value);
+          setCareEID(event.target.value);
         }}
         />
         <label>Specialty</label>
