@@ -75,6 +75,10 @@ const [compatibleAID, setCompatibleAID] = useState("");
 const [qualifiedAID, setQualifiedAID] = useState("");
 const [AnimalCareID, setAnimalCareID] = useState("");
 
+/*const displayInfo = () => {
+  console.log(SID + phoneNumber+address);
+}*/ //a test to show that data is properly stored (it is :) )
+
 
 return (
     <div className="App">
