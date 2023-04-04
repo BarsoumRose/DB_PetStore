@@ -33,7 +33,7 @@ CREATE TABLE Merchandise (
 );
 
 CREATE TABLE Food (
-    IID VARCHAR(50) PRIMARY KEY REFERENCES Merchandise(MID),
+    IID VARCHAR(50) PRIMARY KEY REFERENCES Item(IID),
     Brand VARCHAR(50),
     Shelf_Life VARCHAR(50),
     Refrigeration BOOLEAN,
@@ -41,22 +41,22 @@ CREATE TABLE Food (
 );
 
 CREATE TABLE Enclosure (
-    IID VARCHAR(50) PRIMARY KEY REFERENCES Merchandise(MID),
+    IID VARCHAR(50) PRIMARY KEY REFERENCES Item(IID),
     Brand VARCHAR(50),
     Dimensions VARCHAR(50)
 );
 
 CREATE TABLE Toys (
-    IID VARCHAR(50) PRIMARY KEY REFERENCES Merchandise(MID),
+    IID VARCHAR(50) PRIMARY KEY REFERENCES Item(IID),
     Brand VARCHAR(50),
-    Type VARCHAR(50),
+    The_Type VARCHAR(50),
     Choking_Hazard BOOLEAN
 );
 
 CREATE TABLE Animals (
     AID VARCHAR(50) PRIMARY KEY,
     Hypoallergenic BOOLEAN,
-    Max_Size DECIMAL(10,2),
+    The_Max_Size DECIMAL(10,2),
     Enclosure_Type VARCHAR(50),
     Species VARCHAR(50),
     Lifespan VARCHAR(2),
@@ -65,7 +65,7 @@ CREATE TABLE Animals (
 
 CREATE TABLE Includes (
     MID VARCHAR(50) REFERENCES Merchandise(MID),
-    IID VARCHAR(50) REFERENCES Merchandise(MID),
+    IID VARCHAR(50) REFERENCES Item(IID),
     AID VARCHAR(50) REFERENCES Animals(AID),
     PRIMARY KEY (MID, IID, AID)
 );
@@ -78,8 +78,14 @@ CREATE TABLE Sold_In (
     PRIMARY KEY (MID, SID)
 );
 
+CREATE TABLE Item (
+	IID VARCHAR(50),
+    Brand VARCHAR(50),
+    PRIMARY KEY (IID)
+);
+
 CREATE TABLE Is_For (
-    IID VARCHAR(50) REFERENCES Merchandise(MID),
+    IID VARCHAR(50) REFERENCES Item(IID),
     AID VARCHAR(50) REFERENCES Animals(AID),
     PRIMARY KEY (IID, AID)
 );
