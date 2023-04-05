@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
+const cors = require('cors') //npm install cors
+
+app.use(cors());
+app.use(express.json())
 
 const db = mysql.createConnection({
-    user: root,
-    host:localHost,
-    password: '',
+    user: '',//input correct one 
+    host:'localHost',
+    password: '',//input correct one 
     database: 'pet_store',
 
 });
@@ -40,7 +44,7 @@ app.post('/createEmployee', (req,res) =>{
     const Lname = req.body.Lname;
     const Salary = req.body.Salary;
     const aEID = req.body.aEID;
-    db.query("INSERT INTO Employee (EID, Salary, Lname, Fname) VALUES (?,?,?,?)",[EID,Salary,Lname,Fname],(err,result) => {
+    db.query("INSERT INTO Employee (EID, Salary, Lname, Fname) VALUES (?,?,?,?)",[aEID,Salary,Lname,Fname],(err,result) => {
         if(err) {
             console.log(err)
         } else {

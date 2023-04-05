@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
+import Axios from 'axios' //npm install axios
 
 function App() {
   
@@ -8,31 +9,109 @@ const [aSID, setSID] = useState("");
 const [phoneNumber, setPhoneNumber] = useState("");
 const [address, setAddress] = useState("");
 
+const addStore = () => {
+  Axios.post('http://localhost:3001/createStore',{
+    aSID:aSID,
+    phoneNumber:phoneNumber,
+    address:address
+  }).then(()=> {
+    console.log("addStore success");
+  })
+}
+
 const [worksInSID, setWorksInSID] = useState("");
 const [worksInEID, setWorksInEID] = useState("");
+
+const addWorksIn = () => {
+  Axios.post('http://localhost:3001/createWorksIn',{
+    worksInSID:worksInSID,
+    worksInEID:worksInEID
+  }).then(()=> {
+    console.log("addWorksIn success");
+  })
+}
 
 const [Fname, setFname] = useState("");
 const [Lname, setLname] = useState("");
 const [Salary, setSalary] = useState(0);
 const [aEID, setEID] = useState("");
 
+const addEmployee = () => {
+  Axios.post('http://localhost:3001/createEmployee',{
+    Fname:Fname,
+    Lname:Lname,
+    Salary:Salary,
+    aEID: aEID
+  }).then(()=> {
+    console.log("addEmployee success");
+  })
+}
+
 const [careEID, setCareEID] = useState("");
 const [specialty, setSpecialty] = useState("");
 
+const addAnimalCare = () => {
+  Axios.post('http://localhost:3001/createAnimalCare',{
+    careEID: careEID,
+    specialty:specialty
+  }).then(()=> {
+    console.log("addAnimalCare success");
+  })
+}
+
 const [retailEID, setRetailEID] = useState("");
 const [partTime, setPartTime] = useState(false);
+
+const addCashierRetail = () => {
+  Axios.post('http://localhost:3001/createCashierRetail',{
+    retailEID:retailEID,
+    partTime:partTime
+  }).then(()=> {
+    console.log("addCashierRetail success");
+  })
+}
 
 const [numInStock, setNumInStock] = useState(0);
 const [shelvingLocation, setShelvingLocation] = useState("");
 const [soldInMID, setSoldInMID] = useState("");
 const [soldInSID, setSoldInSID] = useState("");
 
+const addSoldIn = () => {
+  Axios.post('http://localhost:3001/createSoldIn',{
+    numInStock:numInStock,
+    shelvingLocation:shelvingLocation,
+    soldInMID:soldInMID,
+    soldInSID:soldInSID
+  }).then(()=> {
+    console.log("addSoldIn success");
+  })
+}
+
 const [price, setPrice] = useState(0);
 const [aMID, setMID] = useState("");
+
+const addMerchandise = () => {
+  Axios.post('http://localhost:3001/createMerchandise',{
+    price:price,
+    aMID:aMID
+  }).then(()=> {
+    console.log("addMerchandise success");
+  })
+}
 
 const [includesMID, setIncludesMID] = useState("");
 const [includesIID, setIncludesIID] = useState("");
 const [includesAID, setIncludesAID] = useState("");
+
+const addIncludes = () => {
+  Axios.post('http://localhost:3001/createIncludes',{
+    includesMID:includesMID,
+    includesIID:includesIID,
+    includesAID:includesAID
+  }).then(()=> {
+    console.log("addIncludes success");
+  })
+}
 
 const [hypoallergenic, setHypoallergenic] = useState(false);
 const [maxSize, setMaxSize] = useState(0);
@@ -43,8 +122,32 @@ const [lifespan, setLifespan] = useState("");
 const [aAID, setAID] = useState("");
 const [careGuide, setCareGuide] = useState("");
 
+const addAnimal = () => {
+  Axios.post('http://localhost:3001/createAnimal',{
+    hypoallergenic:hypoallergenic,
+    maxSize:maxSize,
+    enclosureType:enclosureType,
+    animalFood:animalFood,
+    species:species,
+    lifespan:lifespan,
+    aAID:aAID,
+    careGuide:careGuide
+  }).then(()=> {
+    console.log("addAnimal success");
+  })
+}
+
 const [aIID, setIID] = useState("");
 const [brand, setBrand] = useState("");
+
+const addItem = () => {
+  Axios.post('http://localhost:3001/createItem',{
+    aIID:aIID,
+    brand:brand
+  }).then(()=> {
+    console.log("addItem success");
+  })
+}
 
 const [foodIID, setFoodIID] = useState("");
 const [foodBrand, setFoodBrand] = useState("");
@@ -52,22 +155,81 @@ const [shelfLife, setShelfLife] = useState("");
 const [needsRefridge, setNeedsRefridge] = useState(false);
 const [isAlive, setIsAlive] = useState(false);
 
+const addFood = () => {
+  Axios.post('http://localhost:3001/createFood',{
+    foodIID:foodIID,
+    foodBrand:foodBrand,
+    shelfLife:shelfLife,
+    needsRefridge:needsRefridge,
+    isAlive:isAlive
+  }).then(()=> {
+    console.log("addFood success");
+  })
+}
+
 const [enclosureIID, setEnclosureIID] = useState("");
 const [enclosureBrand, setEnclosureBrand] = useState("");
 const [dimensions, setDimensions] = useState("");
+
+const addEnclosure = () => {
+  Axios.post('http://localhost:3001/createEnclosure',{
+    enclosureIID:enclosureIID,
+    enclosureBrand:enclosureBrand,
+    dimensions:dimensions
+  }).then(()=> {
+    console.log("AddEnclosure success");
+  })
+}
 
 const [toysIID, setToysIID] = useState("");
 const [toysBrand, setToysBrand] = useState("");
 const [type, setType] = useState("");
 const [chokingHazard, setChokingHazard] = useState(false);
 
+const addToys = () => {
+  Axios.post('http://localhost:3001/createToys',{
+    toysIID:toysIID,
+    toysBrand:toysBrand,
+    type:type,
+    chokingHazard:chokingHazard
+  }).then(()=> {
+    console.log("addToys success");
+  })
+}
+
 const [isForIID, setIsForIID] = useState("");
 const [isForAID, setIsForAID] = useState("");
 
+const addIsFor = () => {
+  Axios.post('http://localhost:3001/createIsFor',{
+    isForIID:isForIID,
+    isForAID:isForAID
+  }).then(()=> {
+    console.log("addIsFor success");
+  })
+}
+
 const [compatibleAID, setCompatibleAID] = useState("");
+
+const addCompatibleWith = () => {
+  Axios.post('http://localhost:3001/createCompatibleWith',{
+    compatibleAID:compatibleAID
+  }).then(()=> {
+    console.log("addCompatibleWith success");
+  })
+}
 
 const [qualifiedAID, setQualifiedAID] = useState("");
 const [AnimalCareID, setAnimalCareID] = useState("");
+
+const addIsQualified = () => {
+  Axios.post('http://localhost:3001/createIsQualified',{
+    qualifiedAID:qualifiedAID,
+    AnimalCareID:AnimalCareID
+  }).then(()=> {
+    console.log("addIsQualified success");
+  })
+}
 
 /*const displayInfo = () => {
   console.log(SID + phoneNumber+address);
@@ -96,7 +258,7 @@ return (
           setAddress(event.target.value);
         }}
         />
-        <button>Add Store</button>
+        <button onClick={addStore}>Add Store</button>
       </div>
       
       
@@ -114,7 +276,7 @@ return (
           setWorksInEID(event.target.value);
         }}
         />
-        <button>Add Works In Relation</button>
+        <button onClick={addWorksIn}>Add Works In Relation</button>
       </div>
       
       
@@ -144,7 +306,7 @@ return (
           setEID(event.target.value);
         }}
         />
-        <button>Add Employee</button>
+        <button onClick={addEmployee}>Add Employee</button>
       </div>
 
       
@@ -162,7 +324,7 @@ return (
           setSpecialty(event.target.value);
         }}
         />
-        <button>Add Animal Care</button>
+        <button onClick={addAnimalCare}>Add Animal Care</button>
       </div>
 
       
@@ -180,7 +342,7 @@ return (
           setPartTime(event.target.value);
         }}
         />
-        <button>Add Cashier/Retail Employee</button>
+        <button onClick={addCashierRetail}>Add Cashier/Retail Employee</button>
       </div>
 
       <h2>Sold In</h2>
@@ -209,7 +371,7 @@ return (
           setSoldInSID(event.target.value);
         }}
         />
-        <button>Add Sold In Relation</button>
+        <button onClick={addSoldIn}>Add Sold In Relation</button>
       </div>
 
       <h2>Merchandise</h2>
@@ -226,7 +388,7 @@ return (
           setMID(event.target.value);
         }}
         />
-        <button>Add Merchandise</button>
+        <button onClick={addMerchandise}>Add Merchandise</button>
       </div>
 
       <h2>Includes</h2>
@@ -246,10 +408,10 @@ return (
         <label>AID</label>
         <input type="text"
         onChange={(event) => {
-          setIncludesIID(event.target.value);
+          setIncludesAID(event.target.value);
         }}
         />
-        <button>Add Includes Relation</button>
+        <button onClick={addIncludes}>Add Includes Relation</button>
       </div>
 
       <h2>Animals</h2>
@@ -302,7 +464,7 @@ return (
           setCareGuide(event.target.value);
         }}
         />
-        <button>Add Animal</button>
+        <button onClick={addAnimal}>Add Animal</button>
       </div>
 
       <h2>Items</h2>
@@ -319,7 +481,7 @@ return (
           setBrand(event.target.value);
         }}
         />
-        <button>Add Items</button>
+        <button onClick={addItem}>Add Items</button>
       </div>
 
       <h2>Food</h2>
@@ -354,7 +516,7 @@ return (
           setIsAlive(event.target.value);
         }}
         />
-        <button>Add Food</button>
+        <button onClick={addFood}>Add Food</button>
       </div>
    
       <h2>Enclosure</h2>
@@ -377,7 +539,7 @@ return (
           setDimensions(event.target.value);
         }}
         />
-        <button>Add Enclosure</button>
+        <button onClick={addEnclosure}>Add Enclosure</button>
       </div>
 
       <h2>Toys</h2>
@@ -406,7 +568,7 @@ return (
           setChokingHazard(event.target.value);
         }}
         />
-        <button>Add Toys</button>
+        <button onClick={addToys}>Add Toys</button>
       </div>
 
       <h2>Is For</h2>
@@ -423,7 +585,7 @@ return (
           setIsForAID(event.target.value);
         }}
         />
-        <button>Add is For Relation</button>
+        <button onClick={addIsFor}>Add is For Relation</button>
       </div>
       
       <h2>Compatible With</h2>
@@ -434,7 +596,7 @@ return (
           setCompatibleAID(event.target.value);
         }}
         />
-        <button>Add Compatible With Relation</button>
+        <button onClick={addCompatibleWith}>Add Compatible With Relation</button>
       </div>
 
       <h2>Is Qualified</h2>
@@ -445,13 +607,13 @@ return (
           setQualifiedAID(event.target.value);
         }}
         />
-        <label>AnimalCareID</label>
+        <label>AnimalCareEID</label>
         <input type="text"
         onChange={(event) => {
           setAnimalCareID(event.target.value);
         }}
         />
-        <button>Add is Qualified Relation</button>
+        <button onClick={addIsQualified}>Add is Qualified Relation</button>
       </div>
 
     </div>
