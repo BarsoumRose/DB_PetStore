@@ -4,7 +4,7 @@ import {useState} from "react";
 
 function App() {
   
-const [SID, setSID] = useState("");
+const [aSID, setSID] = useState("");
 const [phoneNumber, setPhoneNumber] = useState("");
 const [address, setAddress] = useState("");
 
@@ -14,17 +14,11 @@ const [worksInEID, setWorksInEID] = useState("");
 const [Fname, setFname] = useState("");
 const [Lname, setLname] = useState("");
 const [Salary, setSalary] = useState(0);
-const [EID, setEID] = useState("");
+const [aEID, setEID] = useState("");
 
-const [careFname, setCareFname] = useState("");
-const [careLname, setCareLname] = useState("");
-const [careSalary, setCareSalary] = useState(0);
 const [careEID, setCareEID] = useState("");
 const [specialty, setSpecialty] = useState("");
 
-const [retailFname, setRetailFname] = useState("");
-const [retailLname, setRetailLname] = useState("");
-const [retailSalary, setRetailSalary] = useState(0);
 const [retailEID, setRetailEID] = useState("");
 const [partTime, setPartTime] = useState(false);
 
@@ -34,7 +28,7 @@ const [soldInMID, setSoldInMID] = useState("");
 const [soldInSID, setSoldInSID] = useState("");
 
 const [price, setPrice] = useState(0);
-const [MID, setMID] = useState("");
+const [aMID, setMID] = useState("");
 
 const [includesMID, setIncludesMID] = useState("");
 const [includesIID, setIncludesIID] = useState("");
@@ -46,10 +40,10 @@ const [enclosureType, setEnclosureType] = useState("");
 const [animalFood, setAnimalFood] = useState("");
 const [species, setSpecies] = useState("");
 const [lifespan, setLifespan] = useState("");
-const [AID, setAID] = useState("");
+const [aAID, setAID] = useState("");
 const [careGuide, setCareGuide] = useState("");
 
-const [IID, setIID] = useState("");
+const [aIID, setIID] = useState("");
 const [brand, setBrand] = useState("");
 
 const [foodIID, setFoodIID] = useState("");
@@ -156,24 +150,6 @@ return (
       
       <h2>Animal Care</h2>
       <div className="animalCare">
-        <label>Fname</label>
-        <input type="text"
-        onChange={(event) => {
-          setCareFname(event.target.value);
-        }}
-        />
-        <label>Lname</label>
-        <input type="text"
-        onChange={(event) => {
-          setCareLname(event.target.value);
-        }}
-        />
-        <label>Salary</label>
-        <input type="number"
-        onChange={(event) => {
-          setCareSalary(event.target.value);
-        }}
-        />
         <label>EID</label>
         <input type="text"
         onChange={(event) => {
@@ -192,24 +168,6 @@ return (
       
       <h2>Cashier/Retail</h2>
       <div className="cashierRetail">
-        <label>Fname</label>
-        <input type="text"
-        onChange={(event) => {
-          setRetailFname(event.target.value);
-        }}
-        />
-        <label>Lname</label>
-        <input type="text"
-        onChange={(event) => {
-          setRetailLname(event.target.value);
-        }}
-        />
-        <label>Salary</label>
-        <input type="number"
-        onChange={(event) => {
-          setRetailSalary(event.target.value);
-        }}
-        />
         <label>EID</label>
         <input type="text"
         onChange={(event) => {

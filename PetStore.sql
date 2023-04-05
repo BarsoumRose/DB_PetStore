@@ -58,6 +58,7 @@ CREATE TABLE Animals (
     Hypoallergenic BOOLEAN,
     The_Max_Size DECIMAL(10,2),
     Enclosure_Type VARCHAR(50),
+    Food VARCHAR(50),
     Species VARCHAR(50),
     Lifespan VARCHAR(2),
     Care_Guide VARCHAR(500)
