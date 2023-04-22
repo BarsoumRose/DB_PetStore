@@ -4,9 +4,13 @@
   justify-content:center;
 }
 
+
+
 h2 {
   text-align: center;
 }
+
+
 
 .store {
   display:flex;
@@ -21,8 +25,20 @@ h2 {
 .store input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
 
+.store button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.store button:hover {
+  cursor: pointer;
+}
 
 
 
@@ -39,7 +55,21 @@ h2 {
 .worksIn input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.worksIn button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.worksIn button:hover {
+  cursor: pointer;
+}
+
 
 .employee {
   display:flex;
@@ -51,10 +81,26 @@ h2 {
  
 }
 
+
 .employee input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.employee button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.employee button:hover {
+  cursor: pointer;
+}
+
+
 
 .animalCare {
   display:flex;
@@ -69,7 +115,21 @@ h2 {
 .animalCare input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.animalCare button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.animalCare button:hover {
+  cursor: pointer;
+}
+
 
 .cashierRetail {
   display:flex;
@@ -84,7 +144,21 @@ h2 {
 .cashierRetail input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.cashierRetail button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.cashierRetail button:hover {
+  cursor: pointer;
+}
+
 
 .soldIn {
   display:flex;
@@ -99,7 +173,21 @@ h2 {
 .soldIn input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.soldIn button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.soldIn button:hover {
+  cursor: pointer;
+}
+
 
 .merchandise {
   display:flex;
@@ -114,7 +202,21 @@ h2 {
 .merchandise input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.merchandise button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.merchandise button:hover {
+  cursor: pointer;
+}
+
 
 .includes {
   display:flex;
@@ -129,7 +231,21 @@ h2 {
 .includes input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.includes button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.includes button:hover {
+  cursor: pointer;
+}
+
 
 .animals {
   display:flex;
@@ -144,6 +260,19 @@ h2 {
 .animals input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+.animals button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.animals button:hover {
+  cursor: pointer;
 }
 
 .items {
@@ -159,7 +288,21 @@ h2 {
 .items input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.items button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.items button:hover {
+  cursor: pointer;
+}
+
 
 .food {
   display:flex;
@@ -174,7 +317,21 @@ h2 {
 .food input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.food button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.food button:hover {
+  cursor: pointer;
+}
+
 
 .enclosure {
   display:flex;
@@ -189,7 +346,21 @@ h2 {
 .enclosure input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.enclosure button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.enclosure button:hover {
+  cursor: pointer;
+}
+
 
 .toys {
   display:flex;
@@ -204,7 +375,21 @@ h2 {
 .toys input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.toys button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.toys button:hover {
+  cursor: pointer;
+}
+
 
 .isFor {
   display:flex;
@@ -219,7 +404,21 @@ h2 {
 .isFor input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.isFor button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.isFor button:hover {
+  cursor: pointer;
+}
+
 
 .compatibleWith {
   display:flex;
@@ -234,7 +433,21 @@ h2 {
 .compatibleWith input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
 }
+
+.compatibleWith button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.compatibleWith button:hover {
+  cursor: pointer;
+}
+
 
 .isQualified {
   display:flex;
@@ -249,6 +462,19 @@ h2 {
 .isQualified input {
   width: 300px;
   height:50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+.isQualified button {
+  width: 320px;
+  height:50px;
+  margin-top: 15px;
+}
+
+.isQualified button:hover {
+  cursor: pointer;
 }
 
 
