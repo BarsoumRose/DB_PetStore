@@ -7,9 +7,9 @@ app.use(cors());
 app.use(express.json())
 
 const db = mysql.createConnection({
-    user: '',//input correct one 
+    user: 'root',//input correct one 
     host:'localHost',
-    password: '',//input correct one 
+    password: 'password',//input correct one 
     database: 'pet_store',
 
 });
@@ -220,6 +220,50 @@ app.post('/createIsQualified', (req,res) =>{
             console.log(err)
         } else {
             res.send("Is Qualified Values Inserted")
+        }
+    })
+})
+
+app.get("/listStores", (req, res) => {
+    db.query("SELECT * FROM store", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+app.post('/listEmpInStore', (req,res) =>{
+const worksInSID_select = req.body.worksInSID_select;
+
+    db.query("SELECT works_in.EID FROM pet_store.works_in WHERE SID = (?)",[worksInSID_select],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
+
+app.get("/listEmployees", (req, res) => {
+    db.query("SELECT * FROM employee", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+app.post('/listEmpSpeciality', (req,res) =>{
+    const animalCareSpec_select = req.body.animalCareSpec_select;
+
+    db.query("SELECT animal_care.EID FROM pet_store.animal_care WHERE Specialty = (?)",[animalCareSpec_select],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
         }
     })
 })

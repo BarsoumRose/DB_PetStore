@@ -3,6 +3,15 @@ import './App.css';
 import {useState} from "react";
 import Axios from 'axios' //npm install axios
 
+import * as React from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 function App() {
   
 const [aSID, setSID] = useState("");
@@ -15,12 +24,24 @@ const addStore = () => {
     phoneNumber:phoneNumber,
     address:address
   }).then(()=> {
-    console.log("addStore success");
+    console  .log("addStore success");
   })
 }
 
+const [storeList, setstoreList] = useState([]);
+
+const listStores = () => {
+  Axios.get('http://localhost:3001/listStores',{
+  }).then((response)=> {
+    console.log(response)
+    setstoreList(response.data);
+  })
+}
+
+
 const [worksInSID, setWorksInSID] = useState("");
 const [worksInEID, setWorksInEID] = useState("");
+
 
 const addWorksIn = () => {
   Axios.post('http://localhost:3001/createWorksIn',{
@@ -28,6 +49,19 @@ const addWorksIn = () => {
     worksInEID:worksInEID
   }).then(()=> {
     console.log("addWorksIn success");
+  })
+}
+
+const [worksInSID_select, setWorksInSID_select] = useState("");
+const [EmpListinStore, setEmpListInStore] = useState([]);
+
+const listEmpInStore = () => {
+  Axios.post('http://localhost:3001/listEmpInStore',{
+    worksInSID_select:worksInSID_select,
+  }).then((response)=> {
+    console.log("listEmpInStore success");
+    console.log(response);
+    setEmpListInStore(response.data);
   })
 }
 
@@ -47,6 +81,16 @@ const addEmployee = () => {
   })
 }
 
+const [employeeList, setEmployeeList] = useState([]);
+
+const listEmployees = () => {
+  Axios.get('http://localhost:3001/listEmployees',{
+  }).then((response)=> {
+    console.log(response)
+    setEmployeeList(response.data);
+  })
+}
+
 const [careEID, setCareEID] = useState("");
 const [specialty, setSpecialty] = useState("");
 
@@ -56,6 +100,19 @@ const addAnimalCare = () => {
     specialty:specialty
   }).then(()=> {
     console.log("addAnimalCare success");
+  })
+}
+
+const [animalCareSpec_select, setAnimalCareSpec_select] = useState("");
+const [specialityList, setSpecialityList] = useState([]);
+
+const listEmpSpeciality = () => {
+  Axios.get('http://localhost:3001/listEmpSpeciality',{
+    animalCareSpec_select:animalCareSpec_select,
+  }).then((response)=> {
+    console.log("listEmpSpeciality success");
+    console.log(response)
+    setSpecialityList(response.data);
   })
 }
 
@@ -238,95 +295,236 @@ const addIsQualified = () => {
 
 return (
     <div className="App">
-      
-      <h2>Store</h2>
-      <div className="store">
-        <label>SID</label>
-        <input type="text"
-        onChange={(event) => {
-          setSID(event.target.value);
-        }}/>
-        <label>Phone Number</label>
-        <input type="text"
-        onChange={(event) => {
-          setPhoneNumber(event.target.value);
-        }}
-        />
-        <label>Address</label>
-        <input type="text"
-        onChange={(event) => {
-          setAddress(event.target.value);
-        }}
-        />
-        <button onClick={addStore}>Add Store</button>
-      </div>
-      
-      
-      <h2>Works In</h2>
-      <div className="worksIn">
-        <label>SID</label>
-        <input type="text"
-        onChange={(event) => {
-          setWorksInSID(event.target.value);
-        }}
-        />
-        <label>EID</label>
-        <input type="text"
-        onChange={(event) => {
-          setWorksInEID(event.target.value);
-        }}
-        />
-        <button onClick={addWorksIn}>Add Works In Relation</button>
-      </div>
-      
-      
-      <h2>Employee</h2>
-      <div className="employee">
-        <label>Fname</label>
-        <input type="text"
-        onChange={(event) => {
-          setFname(event.target.value);
-        }}
-        />
-        <label>Lname</label>
-        <input type="text"
-        onChange={(event) => {
-          setLname(event.target.value);
-        }}
-        />
-        <label>Salary</label>
-        <input type="number"
-        onChange={(event) => {
-          setSalary(event.target.value);
-        }}
-        />
-        <label>EID</label>
-        <input type="text"
-        onChange={(event) => {
-          setEID(event.target.value);
-        }}
-        />
-        <button onClick={addEmployee}>Add Employee</button>
-      </div>
+       <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Store</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <TextField
+            label="SID"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setSID(event.target.value);
+            }}
+            />
+            <br></br>
+            <TextField
+            label="Phone Number"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setPhoneNumber(event.target.value);
+            }}
+            />
+            <br></br>
+            <TextField
+            label="Address"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setAddress(event.target.value);
+            }}
+            />
+            <br></br>
+            <Button variant="outlined" size="small" onClick={addStore}>
+              Add Store
+            </Button>
+            <br></br>
+            <Button variant="outlined" size="small" onClick={listStores}>
+              List Stores
+            </Button>
+        
+        {storeList.map((val, key)=> {
+          return (
+          <div> 
+           <h3>SID: {val.SID}</h3>  
+            <h3>Phone Number: {val.Phone_Number}</h3> 
+            <h3>Address: {val.Address}</h3> 
+          </div>) 
+        })}
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Works In</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <TextField
+            label="SID"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setWorksInSID(event.target.value);
+            }}
+            />
+            <br></br>
+            
+            <TextField
+            label="EID"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setWorksInEID(event.target.value);
+            }}
+            />
+            <br></br>
 
+            <Button variant="outlined" size="small" onClick={addWorksIn}>
+              Add Works in Relation
+            </Button>
+            <br></br>
+            <TextField
+            label="Store ID"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setWorksInSID_select(event.target.value);
+            }}
+            />
+            <Button variant="outlined" size="small" onClick={listEmpInStore}>
+              List Employees in Store 
+            </Button>
+        
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
       
-      <h2>Animal Care</h2>
-      <div className="animalCare">
-        <label>EID</label>
-        <input type="text"
-        onChange={(event) => {
-          setCareEID(event.target.value);
-        }}
-        />
-        <label>Specialty</label>
-        <input type="text"
-        onChange={(event) => {
-          setSpecialty(event.target.value);
-        }}
-        />
-        <button onClick={addAnimalCare}>Add Animal Care</button>
-      </div>
+      <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Employee</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <TextField
+            label="First Name"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setFname(event.target.value);
+            }}
+            />
+            <br></br>
+            
+            <TextField
+            label="Last Name"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setLname(event.target.value);
+            }}
+            />
+            <br></br>
+            <TextField
+            label="Salary"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setSalary(event.target.value);
+            }}
+            />
+            <br></br>
+            
+            <TextField
+            label="EID"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setEID(event.target.value);
+            }}
+            />
+            <br></br>
+            <Button variant="outlined" size="small" onClick={addEmployee}>
+              Add Employee
+            </Button>
+            <br></br>
+            
+            <Button variant="outlined" size="small" onClick={listEmployees}>
+              List Employees
+            </Button>
+        
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      
+      <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Animal Care</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <TextField
+            label="EID"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setCareEID(event.target.value);
+            }}
+            />
+            <br></br>
+            
+            <TextField
+            label="Speciality"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setSpecialty(event.target.value);
+            }}
+            />
+            <br></br>
 
+            <Button variant="outlined" size="small" onClick={addAnimalCare}>
+              Add Animal Care
+            </Button>
+            <br></br>
+
+            <TextField
+            label="Speciality"
+            id="textfield"
+            defaultValue=""
+            size="small"
+            onChange={(event) => {
+              setAnimalCareSpec_select(event.target.value);
+            }}
+            />
+            <Button variant="outlined" size="small" onClick={listEmpSpeciality}>
+              List Employees in with Speciality 
+            </Button>
+        
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
       
       <h2>Cashier/Retail</h2>
       <div className="cashierRetail">
