@@ -2,8 +2,48 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
 import Axios from 'axios' //npm install axios
+//import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom' //npm install react router dom
+// import { Home } from './Pages/HomePage';
+// import {AnimalCare} from './Pages/AnimalCare';
+// import {Animals} from './Pages/Animals';
+// import {CashierRetail} from './Pages/CashierRetail';
+// import {CompatibleWith} from './Pages/CompatibleWith';
+// import {Employee} from './Pages/Employee';
+// import {Enclosure} from './Pages/Enclosure';
+// import {Food} from './Pages/Food';
+// import {Includes} from './Pages/Includes';
+// import {IsFor} from './Pages/IsFor';
+// import {IsQualified} from './Pages/IsQualified';
+// import {Items} from './Pages/Items';
+// import {Merchandise} from './Pages/Merchandise';
+// import {SoldIn} from './Pages/SoldIn';
+// import {Store} from './Pages/Store';
+// import {Toys} from './Pages/TheToys';
+// import {WorksIn} from './Pages/WhoWorksIn';
+
 
 function App() {
+//   <Router>
+//   <Routes>
+//     <Route path="/" element={<Home />} />
+//     <Route path="/animalCare" element={<AnimalCare />} />
+//     <Route path="/animals" element={<Animals/>} />
+//     <Route path="/cashierRetail" element={<CashierRetail />} />
+//     <Route path="/compatibleWith" element={<CompatibleWith />} />
+//     <Route path="/employee" element={<Employee/>} />
+//     <Route path="/enclosure" element={<Enclosure/>} />
+//     <Route path="/food" element={<Food />} />
+//     <Route path="/includes" element={<Includes />} />
+//     <Route path="/isFor" element={<IsFor />} />
+//     <Route path="/isQualified" element={<IsQualified />} />
+//     <Route path="/items" element={<Items />} />
+//     <Route path="/merchandise" element={<Merchandise />} />
+//     <Route path="/soldIn" element={<SoldIn />} />
+//     <Route path="/store" element={<Store />} />
+//     <Route path="/worksIn" element={<WorksIn/>} />
+//     <Route path="/toys" element={<Toys/>} />  
+//   </Routes>
+// </Router>
   
 const [aSID, setSID] = useState("");
 const [phoneNumber, setPhoneNumber] = useState("");
@@ -36,6 +76,10 @@ const [Lname, setLname] = useState("");
 const [Salary, setSalary] = useState(0);
 const [aEID, setEID] = useState("");
 
+//TODO: add update stuff
+const[newSalary,setNewSalary] = useState(0);
+const[newSalaryEID,setNewSalaryEID] = useState("");
+
 const addEmployee = () => {
   Axios.post('http://localhost:3001/createEmployee',{
     Fname:Fname,
@@ -47,8 +91,24 @@ const addEmployee = () => {
   })
 }
 
+const updateEmployee = () => {
+  Axios.put('http://localhost:3001/updateEmployeeWage',{
+    id: newSalaryEID,
+    salary:newSalary
+  }).then(()=> {
+    console.log("updateEmployee success");
+  })
+}
+
+
+
 const [careEID, setCareEID] = useState("");
 const [specialty, setSpecialty] = useState("");
+
+//TODO: add update stuff
+const[newSpecialty,setNewSpecialty] = useState("");
+const[newSpecialtyEID,setNewSpecialtyEID] = useState("");
+
 
 const addAnimalCare = () => {
   Axios.post('http://localhost:3001/createAnimalCare',{
@@ -59,8 +119,23 @@ const addAnimalCare = () => {
   })
 }
 
+const updateSpecialty = () => {
+  Axios.put('http://localhost:3001/updateSpecialty',{
+    id: newSpecialtyEID,
+    specialty:newSpecialty,
+  }).then(()=> {
+    console.log("updateSpecialty success");
+  })
+}
+
+
 const [retailEID, setRetailEID] = useState("");
 const [partTime, setPartTime] = useState(false);
+
+//TODO: add update stuff
+const[newPartTime,setNewPartTime] = useState(false);
+const[newPartTimeEID,setNewPartTimeEID] = useState("");
+
 
 const addCashierRetail = () => {
   Axios.post('http://localhost:3001/createCashierRetail',{
@@ -71,10 +146,31 @@ const addCashierRetail = () => {
   })
 }
 
+const updatePartTime = () => {
+  Axios.put('http://localhost:3001/updatePartTimeFullTime',{
+    id: newPartTimeEID,
+    partTime:newPartTime,
+  }).then(()=> {
+    console.log("updatePartTime success");
+  })
+}
+
+
+
+
 const [numInStock, setNumInStock] = useState(0);
 const [shelvingLocation, setShelvingLocation] = useState("");
 const [soldInMID, setSoldInMID] = useState("");
 const [soldInSID, setSoldInSID] = useState("");
+
+//TODO: add update stuff for shelving
+const[newShelvingLocation,setNewShelvingLocation] = useState("");
+const[newShelvingLocationMID,setNewShelvingLocationMID] = useState("");
+const[newShelvingLocationSID,setNewShelvingLocationSID] = useState("");
+//TODO: add update stuff for in Stock
+const[newNumInStock,setNewNumInStock] = useState(0);
+const[newNumInStockMID,setNewNumInStockMID] = useState("");
+const[newNumInStockSID,setNewNumInStockSID] = useState("");
 
 const addSoldIn = () => {
   Axios.post('http://localhost:3001/createSoldIn',{
@@ -87,8 +183,34 @@ const addSoldIn = () => {
   })
 }
 
+const updateShelvingLocation = () => {
+  Axios.put('http://localhost:3001/updateShelvingLocation',{
+    mid: newShelvingLocationMID,
+    sid: newShelvingLocationSID,
+    shelvingLocation:newShelvingLocation
+   
+  }).then(()=> {
+    console.log("updateShelvingLocation success");
+  })
+}
+
+const updateInStock = () => {
+  Axios.put('http://localhost:3001/updateInStock',{
+    mid: newNumInStockMID,
+    sid: newNumInStockSID,
+    inStock:newNumInStock
+  }).then(()=> {
+    console.log("updateInStock success");
+  })
+}
+
 const [price, setPrice] = useState(0);
 const [aMID, setMID] = useState("");
+
+//TODO: add update stuff for merchandise
+const[newPrice,setNewPrice] = useState(0);
+const[newPriceMID,setNewPriceMID] = useState("");
+
 
 const addMerchandise = () => {
   Axios.post('http://localhost:3001/createMerchandise',{
@@ -98,6 +220,16 @@ const addMerchandise = () => {
     console.log("addMerchandise success");
   })
 }
+
+const updateMerchandisePrice = () => {
+  Axios.put('http://localhost:3001/updateMerchandisePrice',{
+    id: newPriceMID,
+    price:newPrice
+  }).then(()=> {
+    console.log("updateMerchandisePrice success");
+  })
+}
+
 
 const [includesMID, setIncludesMID] = useState("");
 const [includesIID, setIncludesIID] = useState("");
@@ -238,7 +370,6 @@ const addIsQualified = () => {
 
 return (
     <div className="App">
-      
       <h2>Store</h2>
       <div className="store">
         <label>SID</label>
@@ -259,6 +390,15 @@ return (
         }}
         />
         <button onClick={addStore}>Add Store</button>
+
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="SID..."
+            onChange={(event) => {
+          setSID(event.target.value);
+        }}/>
+        </div>
+     
       </div>
       
       
@@ -277,6 +417,18 @@ return (
         }}
         />
         <button onClick={addWorksIn}>Add Works In Relation</button>
+
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="SID..."
+            onChange={(event) => {
+          setWorksInSID(event.target.value);
+        }}/>
+        <input type="text"placeholder="EID..."
+        onChange={(event) => {
+          setWorksInEID(event.target.value);
+        }}/>
+        </div>
       </div>
       
       
@@ -307,6 +459,36 @@ return (
         }}
         />
         <button onClick={addEmployee}>Add Employee</button>
+
+        <div>
+          <button onClick={updateEmployee}> Update Salary </button>
+          <input type="text" placeholder="EID..."
+          onChange={(event) => {
+          setNewSalaryEID(event.target.value);
+        }}
+        />
+          <input type="text" placeolder="2000..."
+          onChange={(event) => {
+          setNewSalary(event.target.value);
+          
+        }}/>
+
+        </div>
+
+        <div>
+        <input type="text" placeholder="EID..."
+          onChange={(event) => {
+          setNewSalaryEID(event.target.value);
+        }}/>
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="EID..."
+            onChange={(event) => {
+          setEID(event.target.value);
+        }}/>
+        </div>
+        </div>
+
       </div>
 
       
@@ -325,6 +507,27 @@ return (
         }}
         />
         <button onClick={addAnimalCare}>Add Animal Care</button>
+
+        <div>
+          <button onClick={updateSpecialty}> Update Specialty </button>
+          <input type="text" placeholder="EID..."
+          onChange={(event) => {
+          setNewSpecialtyEID(event.target.value);
+        }}/>
+          <input type="text" placeolder="Specialty"
+          onChange={(event) => {
+          setNewSpecialty(event.target.value);
+        }}/>
+        </div>
+
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="EID..."
+            onChange={(event) => {
+          setCareEID(event.target.value);
+        }}/>
+        </div>
+
       </div>
 
       
@@ -339,10 +542,32 @@ return (
         <label>Part Time?</label>
         <input type="checkbox"
         onChange={(event) => {
-          setPartTime(event.target.value);
+          setPartTime(event.target.checked);
         }}
         />
         <button onClick={addCashierRetail}>Add Cashier/Retail Employee</button>
+        <div>
+          <button onClick={updatePartTime}> Update PartTime/Full_Time </button>
+          <input type="text" placeholder="EID..."
+          onChange={(event) => {
+          setNewPartTimeEID(event.target.value);
+        }}/>
+          <input type="checkbox"
+          onChange={(event) => {
+          setNewPartTime(event.target.value);
+        }}/>
+        </div>
+
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="EID..."
+            onChange={(event) => {
+          setRetailEID(event.target.value);
+        }}/>
+        </div>
+
+     
+
       </div>
 
       <h2>Sold In</h2>
@@ -372,6 +597,52 @@ return (
         }}
         />
         <button onClick={addSoldIn}>Add Sold In Relation</button>
+
+        <div>
+          <button onClick={updateInStock}> Update In Stock Num </button>
+          <input type="text" placeholder="MID..."
+          onChange={(event) => {
+          setNewNumInStockMID(event.target.value);
+        }}/>
+          <input type="text" placeholder="SID..."
+          onChange={(event) => {
+          setNewNumInStockSID(event.target.value);
+        }}/>
+          <input type="text" placeholder="In Stock..."
+          onChange={(event) => {
+          setNewNumInStock(event.target.value);
+        }}/>
+        </div>
+
+        <div>
+          <button onClick={updateShelvingLocation}> Update Shelving Location </button>
+          <input type="text" placeholder="MID..."
+          onChange={(event) => {
+          setNewShelvingLocationMID(event.target.value);
+        }}/>
+          <input type="text" placeholder="SID..."
+          onChange={(event) => {
+          setNewShelvingLocationSID(event.target.value);
+        }}/>
+          <input type="text" placeholder="Shelving..."
+          onChange={(event) => {
+          setNewShelvingLocation(event.target.value);
+        }}/>
+        </div>
+
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="MID..."
+            onChange={(event) => {
+          setSoldInMID(event.target.value);
+        }}/>
+
+        <input type="text" placeholder="SID..."
+            onChange={(event) => {
+          setSoldInSID(event.target.value);
+        }}/>
+        </div>
+
       </div>
 
       <h2>Merchandise</h2>
@@ -389,6 +660,27 @@ return (
         }}
         />
         <button onClick={addMerchandise}>Add Merchandise</button>
+
+        <div>
+          <button onClick={updateMerchandisePrice}> Update Price </button>
+          <input type="text" placeholder="MID..."
+          onChange={(event) => {
+          setNewPriceMID(event.target.value);
+        }}/>
+          <input type="text" placeolder="2000..."
+          onChange={(event) => {
+          setNewPrice(event.target.value);
+        }}/>
+        </div>
+
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="MID..."
+            onChange={(event) => {
+          setMID(event.target.value);
+        }}/>
+        </div>
+
       </div>
 
       <h2>Includes</h2>
@@ -412,6 +704,21 @@ return (
         }}
         />
         <button onClick={addIncludes}>Add Includes Relation</button>
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="MID..."
+            onChange={(event) => {
+          setIncludesMID(event.target.value);
+        }}/>
+         <input type="text" placeholder="IID..."
+            onChange={(event) => {
+          setIncludesIID(event.target.value);
+        }}/>
+         <input type="text" placeholder="AID..."
+            onChange={(event) => {
+          setIncludesAID(event.target.value);
+        }}/>
+        </div>
       </div>
 
       <h2>Animals</h2>
@@ -419,7 +726,7 @@ return (
         <label>Hypoallergenic</label>
         <input type="checkbox"
         onChange={(event) => {
-          setHypoallergenic(event.target.value);
+          setHypoallergenic(event.target.checked);
         }}
         />
         <label>Max Size</label>
@@ -465,6 +772,9 @@ return (
         }}
         />
         <button onClick={addAnimal}>Add Animal</button>
+        <div>
+          <button> Delete </button>
+        </div>
       </div>
 
       <h2>Items</h2>
@@ -482,6 +792,13 @@ return (
         }}
         />
         <button onClick={addItem}>Add Items</button>
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="AID..."
+            onChange={(event) => {
+          setAID(event.target.value);
+        }}/>
+        </div>
       </div>
 
       <h2>Food</h2>
@@ -507,16 +824,23 @@ return (
         <label>Needs Refrigeration?</label>
         <input type="checkbox"
         onChange={(event) => {
-          setNeedsRefridge(event.target.value);
+          setNeedsRefridge(event.target.checked);
         }}
         />
         <label>is Alive?</label>
         <input type="checkbox"
         onChange={(event) => {
-          setIsAlive(event.target.value);
+          setIsAlive(event.target.checked);
         }}
         />
         <button onClick={addFood}>Add Food</button>
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="IID..."
+            onChange={(event) => {
+          setFoodIID(event.target.value);
+        }}/>
+        </div>
       </div>
    
       <h2>Enclosure</h2>
@@ -540,6 +864,13 @@ return (
         }}
         />
         <button onClick={addEnclosure}>Add Enclosure</button>
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="IID..."
+            onChange={(event) => {
+          setEnclosureIID(event.target.value);
+        }}/>
+        </div>
       </div>
 
       <h2>Toys</h2>
@@ -565,10 +896,17 @@ return (
         <label>is chocking Hazard?</label>
         <input type="checkbox"
         onChange={(event) => {
-          setChokingHazard(event.target.value);
+          setChokingHazard(event.target.checked);
         }}
         />
         <button onClick={addToys}>Add Toys</button>
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="IID..."
+            onChange={(event) => {
+          setToysIID(event.target.value);
+        }}/>
+        </div>
       </div>
 
       <h2>Is For</h2>
@@ -586,6 +924,14 @@ return (
         }}
         />
         <button onClick={addIsFor}>Add is For Relation</button>
+
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="IID..."
+            onChange={(event) => {
+          setIsForIID(event.target.value);
+        }}/>
+        </div>
       </div>
       
       <h2>Compatible With</h2>
@@ -597,6 +943,16 @@ return (
         }}
         />
         <button onClick={addCompatibleWith}>Add Compatible With Relation</button>
+
+        
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="AID..."
+            onChange={(event) => {
+          setCompatibleAID(event.target.value);
+        }}/>
+        </div>
+
       </div>
 
       <h2>Is Qualified</h2>
@@ -614,7 +970,21 @@ return (
         }}
         />
         <button onClick={addIsQualified}>Add is Qualified Relation</button>
+        
+        <div>
+          <button> Delete </button>
+          <input type="text" placeholder="AID."
+            onChange={(event) => {
+          setQualifiedAID(event.target.value);
+        }}/>
+              <input type="text" placeholder="EID."
+            onChange={(event) => {
+          setAnimalCareID(event.target.value);
+        }}/>
+        </div>
+
       </div>
+
 
     </div>
   );

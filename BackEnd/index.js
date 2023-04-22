@@ -7,9 +7,9 @@ app.use(cors());
 app.use(express.json())
 
 const db = mysql.createConnection({
-    user: '',//input correct one 
+    user: '',
     host:'localHost',
-    password: '',//input correct one 
+    password: '',
     database: 'pet_store',
 
 });
@@ -27,6 +27,10 @@ app.post('/createStore', (req,res) =>{
     })
 })
 
+//TODO: Add delete function for store relation
+
+
+
 app.post('/createWorksIn', (req,res) =>{
     const worksInSID = req.body.worksInSID;
     const worksInEID = req.body.worksInEID;
@@ -38,6 +42,8 @@ app.post('/createWorksIn', (req,res) =>{
         }
     })
 })
+
+//TODO: add delete function for worksIn relation
 
 app.post('/createEmployee', (req,res) =>{
     const Fname = req.body.Fname;
@@ -53,6 +59,22 @@ app.post('/createEmployee', (req,res) =>{
     })
 })
 
+//TODO: add update function for Employee Wage
+app.put('/updateEmployeeWage',(req,res) => {
+    const id = req.body.aEID;
+    const salary = req.body.Salary;
+    db.query("UPDATE Employee SET salary = ? WHERE EID = ?", [salary,id],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+
+})
+
+//TODO: add delete function 
+
 app.post('/createAnimalCare', (req,res) =>{
     const careEID = req.body.careEID; 
     const specialty = req.body.specialty;
@@ -65,10 +87,26 @@ app.post('/createAnimalCare', (req,res) =>{
     })
 })
 
+//TODO: add update function for animal Care relation Specialty
+app.put('/updateSpecialty',(req,res) => {
+    const id = req.body.careID;
+    const specialty = req.body.specialty;
+    db.query("UPDATE Animal_Care SET Specialty = ? WHERE EID = ?", [specialty,id],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+
+})
+
+//TODO: add delete function 
+
 app.post('/createCashierRetail', (req,res) =>{
     const retailEID = req.body.retailEID;
     const partTime = req.body.partTime;
-    db.query("INSERT INTO Cashier_Retail (EID, Part_Time_Full_Time) VALUES (?,?)",[retailEID,partTime],(err,result) => {
+    db.query("INSERT INTO Cashier_Retail (EID, Part_Time_Full_Time) VALUES (?,?)",[retailEID,partTime ? 1:0],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -76,6 +114,23 @@ app.post('/createCashierRetail', (req,res) =>{
         }
     })
 })
+
+
+//TODO: add update function for Cashier/Retailrelation Part_Time_Full_Time
+app.put('/updatePartTimeFullTime',(req,res) => {
+    const id = req.body.retailEID;
+    const partTime = req.body.partTime;
+    db.query("UPDATE  Cashier_Retail SET  partTime = ? WHERE EID = ?", [partTime,id],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+
+})
+
+//TODO: add delete function 
 
 app.post('/createSoldIn', (req,res) =>{
     const numInStock = req.body.numInStock;
@@ -91,6 +146,36 @@ app.post('/createSoldIn', (req,res) =>{
     })
 })
 
+//TODO: add update function for SoldIn relation In_Stock
+app.put('/updateInStock',(req,res) => {
+    const mid = req.body.aMID;
+    const sid = req.body.aSID;
+    const inStock = req.body.numInStock;
+    db.query("UPDATE Sold_In SET  In_Stock = ? WHERE MID = ? AND SID = ?", [inStock,mid,sid],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+
+})
+//TODO: add update function for SoldIn relation Shelving_Location
+app.put('/updateShelvingLocation',(req,res) => {
+    const mid = req.body.aMID;
+    const sid = req.body.aSID;
+    const shelvingLocation = req.body.shelvinglocation;
+    db.query("UPDATE Sold_In SET  Shelving_Location = ? WHERE MID = ? AND SID = ?", [shelvingLocation,mid,sid],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+
+})
+//TODO: add delete function 
+
 app.post('/createMerchandise', (req,res) =>{
     const price = req.body.price;
     const aMID = req.body.aMID;
@@ -102,6 +187,21 @@ app.post('/createMerchandise', (req,res) =>{
         }
     })
 })
+
+//TODO: add update function for Merchandise price
+app.put('/updateMerchandisePrice',(req,res) => {
+    const id = req.body.aMID;
+    const price = req.body.price;
+    db.query("UPDATE Merchandise SET  Price = ? WHERE MID = ?", [price,id],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+
+})
+//TODO: add delete function for 
 
 app.post('/createIncludes', (req,res) =>{
     const includesMID = req.body.includesMID;
@@ -116,6 +216,8 @@ app.post('/createIncludes', (req,res) =>{
     })
 })
 
+//TODO: add delete function 
+
 app.post('/createAnimal', (req,res) =>{
     const hypoallergenic = req.body.hypoallergenic;
     const maxSize = req.body.maxSize;
@@ -126,7 +228,7 @@ app.post('/createAnimal', (req,res) =>{
     const aAID = req.body.aAID;
     const careGuide = req.body.careGuide
     db.query("INSERT INTO Animals (AID, Hypoallergenic, The_Max_Size, Enclosure_Type,Food, Species, Lifespan, Care_Guide) VALUES (?,?,?,?,?,?,?,?)", 
-    [aAID,hypoallergenic,maxSize,enclosureType,animalFood,species,lifespan,careGuide],(err,result) => {
+    [aAID,hypoallergenic ? 1:0,maxSize,enclosureType,animalFood,species,lifespan,careGuide],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -134,6 +236,9 @@ app.post('/createAnimal', (req,res) =>{
         }
     })
 })
+
+//TODO: add delete function 
+
 
 app.post('/createItem', (req,res) =>{
     const aIID = req.body.aIID;
@@ -147,13 +252,16 @@ app.post('/createItem', (req,res) =>{
     })
 })
 
+
+//TODO: add delete function 
+
 app.post('/createFood', (req,res) =>{
     const foodIID = req.body.foodIID;
     const foodBrand = req.body.foodBrand;
     const shelfLife = req.body.shelfLife;
     const needsRefridge = req.body.needsRefridge;
     const isAlive = req.body.isAlive;
-    db.query("INSERT INTO Food (IID, Brand, Shelf_Life, Refrigeration, Alive) VALUES (?,?,?,?,?)",[foodIID,foodBrand,shelfLife,needsRefridge,isAlive],(err,result) => {
+    db.query("INSERT INTO Food (IID, Brand, Shelf_Life, Refrigeration, Alive) VALUES (?,?,?,?,?)",[foodIID,foodBrand,shelfLife,needsRefridge ? 1:0,isAlive ? 1:0],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -161,6 +269,8 @@ app.post('/createFood', (req,res) =>{
         }
     })
 })
+
+//TODO: add delete function 
 
 app.post('/createEnclosure', (req,res) =>{
     const enclosureIID = req.body.enclosureIID;
@@ -175,12 +285,14 @@ app.post('/createEnclosure', (req,res) =>{
     })
 })
 
+//TODO: add delete function 
+
 app.post('/createToys', (req,res) =>{
     const toysIID = req.body.toysIID;
     const toysBrand = req.body.toysBrand;
     const type = req.body.type;
     const chokingHazard = req.body.chokingHazard;
-    db.query("INSERT INTO Toys (IID, Brand, The_Type, Choking_Hazard) VALUES (?,?,?,?)",[toysIID,toysBrand,type,chokingHazard],(err,result) => {
+    db.query("INSERT INTO Toys (IID, Brand, The_Type, Choking_Hazard) VALUES (?,?,?,?)",[toysIID,toysBrand,type,chokingHazard ? 1:0 ],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -188,6 +300,8 @@ app.post('/createToys', (req,res) =>{
         }
     })
 })
+
+//TODO: add delete function 
 
 app.post('/createIsFor', (req,res) =>{
     const isForIID = req.body.isForIID;
@@ -201,6 +315,9 @@ app.post('/createIsFor', (req,res) =>{
     })
 })
 
+
+//TODO: add delete function 
+
 app.post('/createCompatibleWith', (req,res) =>{
     const compatibleAID = req.body.compatibleAID;
     db.query("INSERT INTO Compatible_With (AID) VALUES (?)",[compatibleAID],(err,result) => {
@@ -211,6 +328,8 @@ app.post('/createCompatibleWith', (req,res) =>{
         }
     })
 })
+
+//TODO: add delete function 
 
 app.post('/createIsQualified', (req,res) =>{
     const qualifiedAID = req.body.qualifiedAID;
@@ -223,6 +342,8 @@ app.post('/createIsQualified', (req,res) =>{
         }
     })
 })
+
+//TODO: add delete function 
 
 app.listen(3001,() => {
     console.log("yay, your server is running on port 3001");
