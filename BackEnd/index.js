@@ -7,9 +7,9 @@ app.use(cors());
 app.use(express.json())
 
 const db = mysql.createConnection({
-    user: '',
+    user: 'sqluser',
     host:'localHost',
-    password: '',
+    password: 'password',
     database: 'pet_store',
 
 });
@@ -28,6 +28,16 @@ app.post('/createStore', (req,res) =>{
 })
 
 //TODO: Add delete function for store relation
+app.delete('/deleteStore/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Store WHERE SID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
 
 
 
@@ -44,6 +54,17 @@ app.post('/createWorksIn', (req,res) =>{
 })
 
 //TODO: add delete function for worksIn relation
+app.delete('/deleteWorksIn/:sid/:eid',(req,res) => {
+    const sid = req.params.sid;
+    const eid = req.params.eid;
+    db.query("DELETE FROM Works_In WHERE SID = ? AND EID = ?",[sid, eid], (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
 
 app.post('/createEmployee', (req,res) =>{
     const Fname = req.body.Fname;
@@ -74,6 +95,16 @@ app.put('/updateEmployeeWage',(req,res) => {
 })
 
 //TODO: add delete function 
+app.delete('/deleteEmployee/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Employee WHERE EID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
 
 app.post('/createAnimalCare', (req,res) =>{
     const careEID = req.body.careEID; 
@@ -102,6 +133,17 @@ app.put('/updateSpecialty',(req,res) => {
 })
 
 //TODO: add delete function 
+app.delete('/deleteAnimalCare/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Animal_Care WHERE EID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
+
 
 app.post('/createCashierRetail', (req,res) =>{
     const retailEID = req.body.retailEID;
@@ -131,6 +173,16 @@ app.put('/updatePartTimeFullTime',(req,res) => {
 })
 
 //TODO: add delete function 
+app.delete('/deleteCashierRetail/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Cashier_Retail WHERE EID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
 
 app.post('/createSoldIn', (req,res) =>{
     const numInStock = req.body.numInStock;
@@ -175,6 +227,17 @@ app.put('/updateShelvingLocation',(req,res) => {
 
 })
 //TODO: add delete function 
+app.delete('/deleteSoldIn/:sid/:mid',(req,res) => {
+    const mid = req.params.mid;
+    const sid = req.params.sid;
+    db.query("DELETE FROM Works_In WHERE MID = ? AND SID = ?",[mid, sid], (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
 
 app.post('/createMerchandise', (req,res) =>{
     const price = req.body.price;
@@ -202,6 +265,17 @@ app.put('/updateMerchandisePrice',(req,res) => {
 
 })
 //TODO: add delete function for 
+app.delete('/deleteMerchandise/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Merchandise WHERE MID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
+
 
 app.post('/createIncludes', (req,res) =>{
     const includesMID = req.body.includesMID;
@@ -217,6 +291,18 @@ app.post('/createIncludes', (req,res) =>{
 })
 
 //TODO: add delete function 
+app.delete('/deleteIncludes/:mid/:iid/:aid',(req,res) => {
+    const mid = req.params.sid;
+    const iid = req.params.eid;
+    const aid = req.params.eid;
+    db.query("DELETE FROM Includes WHERE MID = ? AND IID = ? AND AID = ?",[mid, iid,aid], (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
 
 app.post('/createAnimal', (req,res) =>{
     const hypoallergenic = req.body.hypoallergenic;
@@ -238,6 +324,16 @@ app.post('/createAnimal', (req,res) =>{
 })
 
 //TODO: add delete function 
+app.delete('/deleteAnimal/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Store WHERE AID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
 
 
 app.post('/createItem', (req,res) =>{
@@ -254,6 +350,17 @@ app.post('/createItem', (req,res) =>{
 
 
 //TODO: add delete function 
+app.delete('/deleteItem/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Item WHERE IID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
+
 
 app.post('/createFood', (req,res) =>{
     const foodIID = req.body.foodIID;
@@ -271,6 +378,17 @@ app.post('/createFood', (req,res) =>{
 })
 
 //TODO: add delete function 
+app.delete('/deleteFood/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Food WHERE IID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
+
 
 app.post('/createEnclosure', (req,res) =>{
     const enclosureIID = req.body.enclosureIID;
@@ -286,6 +404,16 @@ app.post('/createEnclosure', (req,res) =>{
 })
 
 //TODO: add delete function 
+app.delete('/deleteEnclosure/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Enclosure WHERE IID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
 
 app.post('/createToys', (req,res) =>{
     const toysIID = req.body.toysIID;
@@ -302,6 +430,16 @@ app.post('/createToys', (req,res) =>{
 })
 
 //TODO: add delete function 
+app.delete('/deleteToy/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Toys WHERE IID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
 
 app.post('/createIsFor', (req,res) =>{
     const isForIID = req.body.isForIID;
@@ -317,6 +455,17 @@ app.post('/createIsFor', (req,res) =>{
 
 
 //TODO: add delete function 
+app.delete('/deleteIsFor/:iid/:aid',(req,res) => {
+    const iid = req.params.sid;
+    const aid = req.params.eid;
+    db.query("DELETE FROM Is_For WHERE IID = ? AND AID = ?",[iid, aid], (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
 
 app.post('/createCompatibleWith', (req,res) =>{
     const compatibleAID = req.body.compatibleAID;
@@ -330,6 +479,17 @@ app.post('/createCompatibleWith', (req,res) =>{
 })
 
 //TODO: add delete function 
+app.delete('/deleteCompatibleWith/:id',(req,res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM Compatible_With WHERE AID =?",id, (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+}) 
+
 
 app.post('/createIsQualified', (req,res) =>{
     const qualifiedAID = req.body.qualifiedAID;
@@ -344,6 +504,17 @@ app.post('/createIsQualified', (req,res) =>{
 })
 
 //TODO: add delete function 
+app.delete('/deleteIsQualified/:aid/:eid',(req,res) => {
+    const aid = req.params.aid;
+    const eid = req.params.eid;
+    db.query("DELETE FROM Is_Qualified WHERE AID = ? AND AnimalCareID = ?",[aid, eid], (err,result)=> {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
 
 app.listen(3001,() => {
     console.log("yay, your server is running on port 3001");

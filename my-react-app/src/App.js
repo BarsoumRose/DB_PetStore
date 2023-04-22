@@ -2,49 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
 import Axios from 'axios' //npm install axios
-//import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom' //npm install react router dom
-// import { Home } from './Pages/HomePage';
-// import {AnimalCare} from './Pages/AnimalCare';
-// import {Animals} from './Pages/Animals';
-// import {CashierRetail} from './Pages/CashierRetail';
-// import {CompatibleWith} from './Pages/CompatibleWith';
-// import {Employee} from './Pages/Employee';
-// import {Enclosure} from './Pages/Enclosure';
-// import {Food} from './Pages/Food';
-// import {Includes} from './Pages/Includes';
-// import {IsFor} from './Pages/IsFor';
-// import {IsQualified} from './Pages/IsQualified';
-// import {Items} from './Pages/Items';
-// import {Merchandise} from './Pages/Merchandise';
-// import {SoldIn} from './Pages/SoldIn';
-// import {Store} from './Pages/Store';
-// import {Toys} from './Pages/TheToys';
-// import {WorksIn} from './Pages/WhoWorksIn';
-
 
 function App() {
-//   <Router>
-//   <Routes>
-//     <Route path="/" element={<Home />} />
-//     <Route path="/animalCare" element={<AnimalCare />} />
-//     <Route path="/animals" element={<Animals/>} />
-//     <Route path="/cashierRetail" element={<CashierRetail />} />
-//     <Route path="/compatibleWith" element={<CompatibleWith />} />
-//     <Route path="/employee" element={<Employee/>} />
-//     <Route path="/enclosure" element={<Enclosure/>} />
-//     <Route path="/food" element={<Food />} />
-//     <Route path="/includes" element={<Includes />} />
-//     <Route path="/isFor" element={<IsFor />} />
-//     <Route path="/isQualified" element={<IsQualified />} />
-//     <Route path="/items" element={<Items />} />
-//     <Route path="/merchandise" element={<Merchandise />} />
-//     <Route path="/soldIn" element={<SoldIn />} />
-//     <Route path="/store" element={<Store />} />
-//     <Route path="/worksIn" element={<WorksIn/>} />
-//     <Route path="/toys" element={<Toys/>} />  
-//   </Routes>
-// </Router>
-  
+
 const [aSID, setSID] = useState("");
 const [phoneNumber, setPhoneNumber] = useState("");
 const [address, setAddress] = useState("");
@@ -59,6 +19,10 @@ const addStore = () => {
   })
 }
 
+//TODO: Add Delete Stuff
+const deleteStore = () => {
+  Axios.delete(`http://localhost:3001/deleteStore/${aSID}`);
+}
 const [worksInSID, setWorksInSID] = useState("");
 const [worksInEID, setWorksInEID] = useState("");
 
@@ -71,12 +35,18 @@ const addWorksIn = () => {
   })
 }
 
+//TODO: Add Delete Stuff
+const deleteWorksIn = () => {
+  Axios.delete(`http://localhost:3001/deleteWorksIn/${worksInSID}/${worksInEID}`);
+}
+
+
 const [Fname, setFname] = useState("");
 const [Lname, setLname] = useState("");
 const [Salary, setSalary] = useState(0);
 const [aEID, setEID] = useState("");
 
-//TODO: add update stuff
+//update stuff
 const[newSalary,setNewSalary] = useState(0);
 const[newSalaryEID,setNewSalaryEID] = useState("");
 
@@ -100,12 +70,16 @@ const updateEmployee = () => {
   })
 }
 
+//TODO: Add Delete Stuff
+const deleteEmployee = () => {
+  Axios.delete(`http://localhost:3001/deleteEmployee/${aEID}`);
+}
 
 
 const [careEID, setCareEID] = useState("");
 const [specialty, setSpecialty] = useState("");
 
-//TODO: add update stuff
+//update stuff
 const[newSpecialty,setNewSpecialty] = useState("");
 const[newSpecialtyEID,setNewSpecialtyEID] = useState("");
 
@@ -128,11 +102,15 @@ const updateSpecialty = () => {
   })
 }
 
+//TODO: Add Delete Stuff
+const deleteAnimalCare = () => {
+  Axios.delete(`http://localhost:3001/deleteAnimalCare/${careEID}`);
+}
+
 
 const [retailEID, setRetailEID] = useState("");
 const [partTime, setPartTime] = useState(false);
-
-//TODO: add update stuff
+//update stuff
 const[newPartTime,setNewPartTime] = useState(false);
 const[newPartTimeEID,setNewPartTimeEID] = useState("");
 
@@ -155,6 +133,11 @@ const updatePartTime = () => {
   })
 }
 
+//TODO: Add Delete Stuff
+const deleteCashierRetail = () => {
+  Axios.delete(`http://localhost:3001/deleteCashierRetail/${retailEID}`);
+}
+
 
 
 
@@ -163,11 +146,11 @@ const [shelvingLocation, setShelvingLocation] = useState("");
 const [soldInMID, setSoldInMID] = useState("");
 const [soldInSID, setSoldInSID] = useState("");
 
-//TODO: add update stuff for shelving
+//update stuff for shelving
 const[newShelvingLocation,setNewShelvingLocation] = useState("");
 const[newShelvingLocationMID,setNewShelvingLocationMID] = useState("");
 const[newShelvingLocationSID,setNewShelvingLocationSID] = useState("");
-//TODO: add update stuff for in Stock
+// update stuff for in Stock
 const[newNumInStock,setNewNumInStock] = useState(0);
 const[newNumInStockMID,setNewNumInStockMID] = useState("");
 const[newNumInStockSID,setNewNumInStockSID] = useState("");
@@ -204,10 +187,15 @@ const updateInStock = () => {
   })
 }
 
+//TODO: Add delete Stuff
+const deleteSoldIn = () => {
+  Axios.delete(`http://localhost:3001/deleteSoldIn/${soldInSID}/${soldInMID}`);
+}
+
 const [price, setPrice] = useState(0);
 const [aMID, setMID] = useState("");
 
-//TODO: add update stuff for merchandise
+//update stuff for merchandise
 const[newPrice,setNewPrice] = useState(0);
 const[newPriceMID,setNewPriceMID] = useState("");
 
@@ -230,6 +218,10 @@ const updateMerchandisePrice = () => {
   })
 }
 
+//TODO: Add delete Stuff
+const deleteMerchandise = () => {
+  Axios.delete(`http://localhost:3001/deleteMerchandise/${aMID}`);
+}
 
 const [includesMID, setIncludesMID] = useState("");
 const [includesIID, setIncludesIID] = useState("");
@@ -243,6 +235,11 @@ const addIncludes = () => {
   }).then(()=> {
     console.log("addIncludes success");
   })
+}
+
+//TODO: Add Delete Stuff
+const deleteIncludes = () => {
+  Axios.delete(`http://localhost:3001/deleteIncludes/${includesMID}/${includesIID}/${includesAID}`);
 }
 
 const [hypoallergenic, setHypoallergenic] = useState(false);
@@ -269,8 +266,14 @@ const addAnimal = () => {
   })
 }
 
+//TODO: Add Delete Stuff
+const deleteAnimal = () => {
+  Axios.delete(`http://localhost:3001/deleteAnimal/${aAID}`);
+}
+
 const [aIID, setIID] = useState("");
 const [brand, setBrand] = useState("");
+
 
 const addItem = () => {
   Axios.post('http://localhost:3001/createItem',{
@@ -279,6 +282,11 @@ const addItem = () => {
   }).then(()=> {
     console.log("addItem success");
   })
+}
+
+//TODO: Add Delete Stuff
+const deleteItem = () => {
+  Axios.delete(`http://localhost:3001/deleteItem/${aIID}`);
 }
 
 const [foodIID, setFoodIID] = useState("");
@@ -299,6 +307,11 @@ const addFood = () => {
   })
 }
 
+//TODO: Add delete Stuff
+const deleteFood = () => {
+  Axios.delete(`http://localhost:3001/deleteFood/${foodIID}`);
+}
+
 const [enclosureIID, setEnclosureIID] = useState("");
 const [enclosureBrand, setEnclosureBrand] = useState("");
 const [dimensions, setDimensions] = useState("");
@@ -311,6 +324,11 @@ const addEnclosure = () => {
   }).then(()=> {
     console.log("AddEnclosure success");
   })
+}
+
+//TODO: Add delete Stuff
+const deleteEnclosure = () => {
+  Axios.delete(`http://localhost:3001/deleteEnclosure/${enclosureIID}`);
 }
 
 const [toysIID, setToysIID] = useState("");
@@ -329,6 +347,11 @@ const addToys = () => {
   })
 }
 
+//TODO: Add delete Stuff
+const deleteToy = () => {
+  Axios.delete(`http://localhost:3001/deleteToy/${toysIID}`);
+}
+
 const [isForIID, setIsForIID] = useState("");
 const [isForAID, setIsForAID] = useState("");
 
@@ -341,6 +364,11 @@ const addIsFor = () => {
   })
 }
 
+//TODO: Add delete Stuff
+const deleteIsFor = (iid,aid) => {
+  Axios.delete(`http://localhost:3001/deleteIsFor/${isForIID}/${isForAID}`);
+}
+
 const [compatibleAID, setCompatibleAID] = useState("");
 
 const addCompatibleWith = () => {
@@ -349,6 +377,11 @@ const addCompatibleWith = () => {
   }).then(()=> {
     console.log("addCompatibleWith success");
   })
+}
+
+//TODO: Add delete Stuff
+const deleteCompatibleWith = () => {
+  Axios.delete(`http://localhost:3001/deleteCompatibleWith/${compatibleAID}`);
 }
 
 const [qualifiedAID, setQualifiedAID] = useState("");
@@ -361,6 +394,11 @@ const addIsQualified = () => {
   }).then(()=> {
     console.log("addIsQualified success");
   })
+}
+
+//TODO: Add Delete Stuff
+const deleteIsQualified = () => {
+  Axios.delete(`http://localhost:3001/deleteIsQualified/${qualifiedAID}/${AnimalCareID}`);
 }
 
 /*const displayInfo = () => {
@@ -392,7 +430,7 @@ return (
         <button onClick={addStore}>Add Store</button>
 
         <div>
-          <button> Delete </button>
+          <button onClick={deleteStore}> Delete </button>
           <input type="text" placeholder="SID..."
             onChange={(event) => {
           setSID(event.target.value);
@@ -419,7 +457,7 @@ return (
         <button onClick={addWorksIn}>Add Works In Relation</button>
 
         <div>
-          <button> Delete </button>
+          <button onClick={deleteWorksIn}> Delete </button>
           <input type="text" placeholder="SID..."
             onChange={(event) => {
           setWorksInSID(event.target.value);
@@ -481,7 +519,7 @@ return (
           setNewSalaryEID(event.target.value);
         }}/>
         <div>
-          <button> Delete </button>
+          <button onClick={deleteEmployee}> Delete </button>
           <input type="text" placeholder="EID..."
             onChange={(event) => {
           setEID(event.target.value);
@@ -521,7 +559,7 @@ return (
         </div>
 
         <div>
-          <button> Delete </button>
+          <button onClick={deleteAnimalCare}> Delete </button>
           <input type="text" placeholder="EID..."
             onChange={(event) => {
           setCareEID(event.target.value);
@@ -559,7 +597,7 @@ return (
         </div>
 
         <div>
-          <button> Delete </button>
+          <button onClick={deleteCashierRetail}> Delete </button>
           <input type="text" placeholder="EID..."
             onChange={(event) => {
           setRetailEID(event.target.value);
@@ -631,7 +669,7 @@ return (
         </div>
 
         <div>
-          <button> Delete </button>
+          <button onClick={deleteSoldIn}> Delete </button>
           <input type="text" placeholder="MID..."
             onChange={(event) => {
           setSoldInMID(event.target.value);
@@ -674,7 +712,7 @@ return (
         </div>
 
         <div>
-          <button> Delete </button>
+          <button onClick={deleteMerchandise}> Delete </button>
           <input type="text" placeholder="MID..."
             onChange={(event) => {
           setMID(event.target.value);
@@ -705,7 +743,7 @@ return (
         />
         <button onClick={addIncludes}>Add Includes Relation</button>
         <div>
-          <button> Delete </button>
+          <button onClick={deleteIncludes}> Delete </button>
           <input type="text" placeholder="MID..."
             onChange={(event) => {
           setIncludesMID(event.target.value);
@@ -773,7 +811,12 @@ return (
         />
         <button onClick={addAnimal}>Add Animal</button>
         <div>
-          <button> Delete </button>
+          <button onClick={deleteAnimal}> Delete </button>
+          <input type="text" placeolder="AID..."
+          onChange={(event) => {
+          setAID(event.target.value);
+        }}/>
+
         </div>
       </div>
 
@@ -793,7 +836,7 @@ return (
         />
         <button onClick={addItem}>Add Items</button>
         <div>
-          <button> Delete </button>
+          <button onClick={deleteItem}> Delete </button>
           <input type="text" placeholder="AID..."
             onChange={(event) => {
           setAID(event.target.value);
@@ -835,7 +878,7 @@ return (
         />
         <button onClick={addFood}>Add Food</button>
         <div>
-          <button> Delete </button>
+          <button onClick={deleteFood}> Delete </button>
           <input type="text" placeholder="IID..."
             onChange={(event) => {
           setFoodIID(event.target.value);
@@ -865,7 +908,7 @@ return (
         />
         <button onClick={addEnclosure}>Add Enclosure</button>
         <div>
-          <button> Delete </button>
+          <button onClick={deleteEnclosure}> Delete </button>
           <input type="text" placeholder="IID..."
             onChange={(event) => {
           setEnclosureIID(event.target.value);
@@ -901,7 +944,7 @@ return (
         />
         <button onClick={addToys}>Add Toys</button>
         <div>
-          <button> Delete </button>
+          <button onClick={deleteToy}> Delete </button>
           <input type="text" placeholder="IID..."
             onChange={(event) => {
           setToysIID(event.target.value);
@@ -926,7 +969,7 @@ return (
         <button onClick={addIsFor}>Add is For Relation</button>
 
         <div>
-          <button> Delete </button>
+          <button onClick={deleteIsFor}> Delete </button>
           <input type="text" placeholder="IID..."
             onChange={(event) => {
           setIsForIID(event.target.value);
@@ -946,7 +989,7 @@ return (
 
         
         <div>
-          <button> Delete </button>
+          <button onClick={deleteCompatibleWith}> Delete </button>
           <input type="text" placeholder="AID..."
             onChange={(event) => {
           setCompatibleAID(event.target.value);
@@ -972,12 +1015,12 @@ return (
         <button onClick={addIsQualified}>Add is Qualified Relation</button>
         
         <div>
-          <button> Delete </button>
+          <button onClick={deleteIsQualified}> Delete </button>
           <input type="text" placeholder="AID."
             onChange={(event) => {
           setQualifiedAID(event.target.value);
         }}/>
-              <input type="text" placeholder="EID."
+        <input type="text" placeholder="EID."
             onChange={(event) => {
           setAnimalCareID(event.target.value);
         }}/>
@@ -989,5 +1032,5 @@ return (
     </div>
   );
 }
-
 export default App;
+
