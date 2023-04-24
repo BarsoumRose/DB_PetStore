@@ -502,6 +502,15 @@ function App() {
             <Button variant="outlined" size="small" onClick={addStore}>
               Add Store
             </Button>
+            {/* 
+          <div>
+          <button onClick={deleteStore}> Delete </button>
+          <input type="text" placeholder="SID..."
+            onChange={(event) => {
+              setSID(event.target.value);
+            }}/>
+          </div>
+        */}
             <br></br>
             <Button variant="outlined" size="small" onClick={listStores}>
               List Stores
@@ -564,6 +573,22 @@ function App() {
                 setWorksInSID_select(event.target.value);
               }}
             />
+
+            {
+              /*
+              <div>
+                <button onClick={deleteWorksIn}> Delete </button>
+                <input type="text" placeholder="SID..."
+                  onChange={(event) => {
+                    setWorksInSID(event.target.value);
+                  }}/>
+                  <input type="text"placeholder="EID..."
+                    onChange={(event) => {
+                      setWorksInEID(event.target.value);
+                    }}/>
+                </div>
+              </div>
+       */}
             <Button variant="outlined" size="small" onClick={listEmpInStore}>
               List Employees in Store
             </Button>
@@ -645,7 +670,7 @@ function App() {
               }}
             />
             <input
-              type="text"
+              type="number"
               placeolder="2000..."
               onChange={(event) => {
                 setNewSalary(event.target.value);
@@ -717,6 +742,29 @@ function App() {
               Add Animal Care
             </Button>
             <br></br>
+
+            {
+              /*        
+          <div>
+            <button onClick={updateSpecialty}> Update Specialty </button>
+            <input type="text" placeholder="EID..."
+            onChange={(event) => {
+              setNewSpecialtyEID(event.target.value);
+            }}/>
+            <input type="text" placeolder="Specialty"
+            onChange={(event) => {
+              setNewSpecialty(event.target.value);
+            }}/>
+          </div>
+
+          <div>
+            <button onClick={deleteAnimalCare}> Delete </button>
+            <input type="text" placeholder="EID..."
+              onChange={(event) => {
+                setCareEID(event.target.value);
+              }}/>
+          </div> */
+          }
 
             <TextField
               label="Speciality"
@@ -884,10 +932,7 @@ function App() {
               </div>
 
               <div>
-                <button onClick={updateShelvingLocation}>
-                  {" "}
-                  Update Shelving Location{" "}
-                </button>
+                <button onClick={updateShelvingLocation}> Update Shelving Location </button>
                 <input
                   type="text"
                   placeholder="MID..."
@@ -1169,9 +1214,9 @@ function App() {
                 <button onClick={deleteItem}> Delete </button>
                 <input
                   type="text"
-                  placeholder="AID..."
+                  placeholder="IID..."
                   onChange={(event) => {
-                    setAID(event.target.value);
+                    setIID(event.target.value);
                   }}
                 />
               </div>
@@ -1381,8 +1426,11 @@ function App() {
                   placeholder="IID..."
                   onChange={(event) => {
                     setIsForIID(event.target.value);
-                  }}
-                />
+                  }}/>
+                  <input type="text" placeholder="AID..."
+                    onChange={(event) => {
+                    setIsForAID(event.target.value);
+                  }}/>
               </div>
             </div>
           </Typography>
