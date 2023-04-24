@@ -365,7 +365,7 @@ const addIsFor = () => {
 }
 
 //TODO: Add delete Stuff
-const deleteIsFor = (iid,aid) => {
+const deleteIsFor = () => {
   Axios.delete(`http://localhost:3001/deleteIsFor/${isForIID}/${isForAID}`);
 }
 
@@ -503,21 +503,12 @@ return (
           <input type="text" placeholder="EID..."
           onChange={(event) => {
           setNewSalaryEID(event.target.value);
-        }}
-        />
-          <input type="text" placeolder="2000..."
+        }}/>
+          <input type="number" placeholder="salary..."
           onChange={(event) => {
           setNewSalary(event.target.value);
-          
         }}/>
-
-        </div>
-
-        <div>
-        <input type="text" placeholder="EID..."
-          onChange={(event) => {
-          setNewSalaryEID(event.target.value);
-        }}/>
+        
         <div>
           <button onClick={deleteEmployee}> Delete </button>
           <input type="text" placeholder="EID..."
@@ -837,9 +828,9 @@ return (
         <button onClick={addItem}>Add Items</button>
         <div>
           <button onClick={deleteItem}> Delete </button>
-          <input type="text" placeholder="AID..."
+          <input type="text" placeholder="IID..."
             onChange={(event) => {
-          setAID(event.target.value);
+          setIID(event.target.value);
         }}/>
         </div>
       </div>
@@ -973,6 +964,10 @@ return (
           <input type="text" placeholder="IID..."
             onChange={(event) => {
           setIsForIID(event.target.value);
+        }}/>
+         <input type="text" placeholder="AID..."
+            onChange={(event) => {
+          setIsForAID(event.target.value);
         }}/>
         </div>
       </div>

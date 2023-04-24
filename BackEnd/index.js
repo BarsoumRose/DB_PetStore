@@ -18,7 +18,8 @@ app.post('/createStore', (req,res) =>{
     const aSID = req.body.aSID;
     const phoneNumber = req.body.phoneNumber;
     const address = req.body.address;
-    db.query("INSERT INTO Store (SID,Phone_Number,Address) VALUES (?,?,?)",[aSID,phoneNumber,address],(err,result) => {
+    db.query("INSERT INTO Store (SID,Phone_Number,Address) VALUES (?,?,?)",
+    [aSID,phoneNumber,address],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -29,12 +30,13 @@ app.post('/createStore', (req,res) =>{
 
 //TODO: Add delete function for store relation
 app.delete('/deleteStore/:id',(req,res) => {
-    const id = req.params.id;
-    db.query("DELETE FROM Store WHERE SID =?",id, (err,result)=> {
+    const aSid = req.params.id;
+    db.query("DELETE FROM Store WHERE SID = ?",aSid, (err,result)=> {
         if(err) {
             console.log(err)
         } else {
-            res.send(result)
+            res.send("store deleted")
+
         }
     })
 }) 
@@ -82,10 +84,12 @@ app.post('/createEmployee', (req,res) =>{
 
 //TODO: add update function for Employee Wage
 app.put('/updateEmployeeWage',(req,res) => {
-    const id = req.body.aEID;
-    const salary = req.body.Salary;
-    db.query("UPDATE Employee SET salary = ? WHERE EID = ?", [salary,id],(err,result) => {
+    const id = req.body.id;
+    const salary = req.body.salary;
+    db.query("UPDATE Employee SET salary = ? WHERE EID = ?", 
+    [salary,id],(err,result) => {
         if(err) {
+
             console.log(err)
         } else {
             res.send(result)
@@ -99,6 +103,7 @@ app.delete('/deleteEmployee/:id',(req,res) => {
     const id = req.params.id;
     db.query("DELETE FROM Employee WHERE EID =?",id, (err,result)=> {
         if(err) {
+
             console.log(err)
         } else {
             res.send(result)
@@ -120,7 +125,7 @@ app.post('/createAnimalCare', (req,res) =>{
 
 //TODO: add update function for animal Care relation Specialty
 app.put('/updateSpecialty',(req,res) => {
-    const id = req.body.careID;
+    const id = req.body.id;
     const specialty = req.body.specialty;
     db.query("UPDATE Animal_Care SET Specialty = ? WHERE EID = ?", [specialty,id],(err,result) => {
         if(err) {
@@ -135,7 +140,7 @@ app.put('/updateSpecialty',(req,res) => {
 //TODO: add delete function 
 app.delete('/deleteAnimalCare/:id',(req,res) => {
     const id = req.params.id;
-    db.query("DELETE FROM Animal_Care WHERE EID =?",id, (err,result)=> {
+    db.query("DELETE FROM Animal_Care WHERE EID = ?",id, (err,result)=> {
         if(err) {
             console.log(err)
         } else {
@@ -160,9 +165,9 @@ app.post('/createCashierRetail', (req,res) =>{
 
 //TODO: add update function for Cashier/Retailrelation Part_Time_Full_Time
 app.put('/updatePartTimeFullTime',(req,res) => {
-    const id = req.body.retailEID;
+    const id = req.body.id;
     const partTime = req.body.partTime;
-    db.query("UPDATE  Cashier_Retail SET  partTime = ? WHERE EID = ?", [partTime,id],(err,result) => {
+    db.query("UPDATE  Cashier_Retail SET  Part_Time_Full_Time = ? WHERE EID = ?", [partTime ? 1:0,id],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -186,7 +191,7 @@ app.delete('/deleteCashierRetail/:id',(req,res) => {
 
 app.post('/createSoldIn', (req,res) =>{
     const numInStock = req.body.numInStock;
-    const shelvingLocation = req.body.shelvinglocation;
+    const shelvingLocation = req.body.shelvingLocation;
     const soldInMID = req.body.soldInMID;
     const soldInSID = req.body.soldInSID;
     db.query("INSERT INTO Sold_In (MID, SID, In_Stock, Shelving_Location) VALUES (?,?,?,?)",[soldInMID,soldInSID,numInStock,shelvingLocation],(err,result) => {
@@ -200,9 +205,9 @@ app.post('/createSoldIn', (req,res) =>{
 
 //TODO: add update function for SoldIn relation In_Stock
 app.put('/updateInStock',(req,res) => {
-    const mid = req.body.aMID;
-    const sid = req.body.aSID;
-    const inStock = req.body.numInStock;
+    const mid = req.body.mid;
+    const sid = req.body.sid;
+    const inStock = req.body.inStock;
     db.query("UPDATE Sold_In SET  In_Stock = ? WHERE MID = ? AND SID = ?", [inStock,mid,sid],(err,result) => {
         if(err) {
             console.log(err)
@@ -214,9 +219,9 @@ app.put('/updateInStock',(req,res) => {
 })
 //TODO: add update function for SoldIn relation Shelving_Location
 app.put('/updateShelvingLocation',(req,res) => {
-    const mid = req.body.aMID;
-    const sid = req.body.aSID;
-    const shelvingLocation = req.body.shelvinglocation;
+    const mid = req.body.mid;
+    const sid = req.body.sid;
+    const shelvingLocation = req.body.shelvingLocation;
     db.query("UPDATE Sold_In SET  Shelving_Location = ? WHERE MID = ? AND SID = ?", [shelvingLocation,mid,sid],(err,result) => {
         if(err) {
             console.log(err)
@@ -230,7 +235,7 @@ app.put('/updateShelvingLocation',(req,res) => {
 app.delete('/deleteSoldIn/:sid/:mid',(req,res) => {
     const mid = req.params.mid;
     const sid = req.params.sid;
-    db.query("DELETE FROM Works_In WHERE MID = ? AND SID = ?",[mid, sid], (err,result)=> {
+    db.query("DELETE FROM Sold_In WHERE MID = ? AND SID = ?",[mid, sid], (err,result)=> {
         if(err) {
             console.log(err)
         } else {
@@ -253,7 +258,7 @@ app.post('/createMerchandise', (req,res) =>{
 
 //TODO: add update function for Merchandise price
 app.put('/updateMerchandisePrice',(req,res) => {
-    const id = req.body.aMID;
+    const id = req.body.id;
     const price = req.body.price;
     db.query("UPDATE Merchandise SET  Price = ? WHERE MID = ?", [price,id],(err,result) => {
         if(err) {
@@ -292,9 +297,9 @@ app.post('/createIncludes', (req,res) =>{
 
 //TODO: add delete function 
 app.delete('/deleteIncludes/:mid/:iid/:aid',(req,res) => {
-    const mid = req.params.sid;
-    const iid = req.params.eid;
-    const aid = req.params.eid;
+    const mid = req.params.mid;
+    const iid = req.params.iid;
+    const aid = req.params.aid;
     db.query("DELETE FROM Includes WHERE MID = ? AND IID = ? AND AID = ?",[mid, iid,aid], (err,result)=> {
         if(err) {
             console.log(err)
@@ -326,7 +331,7 @@ app.post('/createAnimal', (req,res) =>{
 //TODO: add delete function 
 app.delete('/deleteAnimal/:id',(req,res) => {
     const id = req.params.id;
-    db.query("DELETE FROM Store WHERE AID =?",id, (err,result)=> {
+    db.query("DELETE FROM Animals WHERE AID = ?",id, (err,result)=> {
         if(err) {
             console.log(err)
         } else {
@@ -456,13 +461,13 @@ app.post('/createIsFor', (req,res) =>{
 
 //TODO: add delete function 
 app.delete('/deleteIsFor/:iid/:aid',(req,res) => {
-    const iid = req.params.sid;
-    const aid = req.params.eid;
+    const iid = req.params.iid;
+    const aid = req.params.aid;
     db.query("DELETE FROM Is_For WHERE IID = ? AND AID = ?",[iid, aid], (err,result)=> {
         if(err) {
             console.log(err)
         } else {
-            res.send(result)
+            res.send("delete is for sucess")
         }
     })
 })
