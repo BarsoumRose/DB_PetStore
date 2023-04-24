@@ -82,8 +82,8 @@ app.post('/createEmployee', (req,res) =>{
 
 //TODO: add update function for Employee Wage
 app.put('/updateEmployeeWage',(req,res) => {
-    const id = req.body.aEID;
-    const salary = req.body.Salary;
+    const id = req.body.id;
+    const salary = req.body.salary;
     db.query("UPDATE Employee SET salary = ? WHERE EID = ?", [salary,id],(err,result) => {
         if(err) {
             console.log(err)
