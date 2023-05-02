@@ -120,7 +120,6 @@ app.post('/createAnimalCare', (req,res) =>{
 
 //TODO: add update function for animal Care relation Specialty
 app.put('/updateSpecialty',(req,res) => {
-    const id = req.body.careID;
     const specialty = req.body.specialty;
     db.query("UPDATE Animal_Care SET Specialty = ? WHERE EID = ?", [specialty,id],(err,result) => {
         if(err) {
