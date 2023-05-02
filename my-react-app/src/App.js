@@ -152,7 +152,7 @@ function App() {
   const [specialityList, setSpecialityList] = useState([]);
 
   const listEmpSpeciality = () => {
-    Axios.get("http://localhost:3001/listEmpSpeciality", {
+    Axios.post("http://localhost:3001/listEmpSpeciality", {
       animalCareSpec_select: animalCareSpec_select,
     }).then((response) => {
       console.log("listEmpSpeciality success");
@@ -188,6 +188,24 @@ function App() {
   //TODO: Add Delete Stuff
   const deleteCashierRetail = () => {
     Axios.delete(`http://localhost:3001/deleteCashierRetail/${retailEID}`);
+  };
+
+  const [part_timeList, setPart_timeList] = useState([]);
+
+  const listPart_time = () => {
+    Axios.get("http://localhost:3001/listPart_time", {}).then((response) => {
+      console.log(response);
+      setPart_timeList(response.data);
+    });
+  };
+
+  const [full_timeList, setFull_timeList] = useState([]);
+
+  const listFull_time = () => {
+    Axios.get("http://localhost:3001/listFull_time", {}).then((response) => {
+      console.log(response);
+      setFull_timeList(response.data);
+    });
   };
 
   const [numInStock, setNumInStock] = useState(0);
@@ -242,6 +260,34 @@ function App() {
     );
   };
 
+  // list merch with given SID
+  const [SID_merch_select, setSID_merch_select] = useState("");
+  const [SID_merch_list, setSID_merch_list] = useState([]);
+
+  const listSID_merch = () => {
+    Axios.post("http://localhost:3001/listSID_merch", {
+      SID_merch_select: SID_merch_select,
+    }).then((response) => {
+      console.log("listSID_merch success");
+      console.log(response);
+      setSID_merch_list(response.data);
+    });
+  };
+
+  // list SID that sell given MID
+  const [MID_store_select, setMID_store_select] = useState("");
+  const [MID_store_list, setMID_store_list] = useState([]);
+
+  const listMID_store = () => {
+    Axios.post("http://localhost:3001/listMID_store", {
+      MID_store_select: MID_store_select,
+    }).then((response) => {
+      console.log("listMID_store success");
+      console.log(response);
+      setMID_store_list(response.data);
+    });
+  };
+
   const [price, setPrice] = useState(0);
   const [aMID, setMID] = useState("");
 
@@ -270,6 +316,16 @@ function App() {
   //TODO: Add delete Stuff
   const deleteMerchandise = () => {
     Axios.delete(`http://localhost:3001/deleteMerchandise/${aMID}`);
+  };
+
+  const [merchList, setmerchList] = useState([]);
+
+  const listMerch = () => {
+    Axios.get("http://localhost:3001/listMerch", {}).then((response) => {
+      console.log(response);
+      console.log("listMerch Success");
+      setmerchList(response.data);
+    });
   };
 
   const [includesMID, setIncludesMID] = useState("");
@@ -322,6 +378,16 @@ function App() {
     Axios.delete(`http://localhost:3001/deleteAnimal/${aAID}`);
   };
 
+  const [animalList, setAnimalList] = useState([]);
+
+  const listAnimals = () => {
+    Axios.get("http://localhost:3001/listAnimals", {}).then((response) => {
+      console.log(response);
+      console.log("listAnimals Success");
+      setAnimalList(response.data);
+    });
+  };
+
   const [aIID, setIID] = useState("");
   const [brand, setBrand] = useState("");
 
@@ -337,6 +403,16 @@ function App() {
   //TODO: Add Delete Stuff
   const deleteItem = () => {
     Axios.delete(`http://localhost:3001/deleteItem/${aIID}`);
+  };
+
+  const [itemList, setItemList] = useState([]);
+
+  const listItems = () => {
+    Axios.get("http://localhost:3001/listItems", {}).then((response) => {
+      console.log(response);
+      console.log("listItems Success");
+      setItemList(response.data);
+    });
   };
 
   const [foodIID, setFoodIID] = useState("");
@@ -362,6 +438,16 @@ function App() {
     Axios.delete(`http://localhost:3001/deleteFood/${foodIID}`);
   };
 
+  const [foodList, setFoodList] = useState([]);
+
+  const listFood = () => {
+    Axios.get("http://localhost:3001/listFood", {}).then((response) => {
+      console.log(response);
+      console.log("listFood Success");
+      setFoodList(response.data);
+    });
+  };
+
   const [enclosureIID, setEnclosureIID] = useState("");
   const [enclosureBrand, setEnclosureBrand] = useState("");
   const [dimensions, setDimensions] = useState("");
@@ -379,6 +465,16 @@ function App() {
   //TODO: Add delete Stuff
   const deleteEnclosure = () => {
     Axios.delete(`http://localhost:3001/deleteEnclosure/${enclosureIID}`);
+  };
+
+  const [enclosureList, setEnclosureList] = useState([]);
+
+  const listEnclosure = () => {
+    Axios.get("http://localhost:3001/listEnclosure", {}).then((response) => {
+      console.log(response);
+      console.log("listEnclosure Success");
+      setEnclosureList(response.data);
+    });
   };
 
   const [toysIID, setToysIID] = useState("");
@@ -400,6 +496,16 @@ function App() {
   //TODO: Add delete Stuff
   const deleteToy = () => {
     Axios.delete(`http://localhost:3001/deleteToy/${toysIID}`);
+  };
+
+  const [toyList, setToyList] = useState([]);
+
+  const listToys = () => {
+    Axios.get("http://localhost:3001/listToys", {}).then((response) => {
+      console.log(response);
+      console.log("listToys Success");
+      setToyList(response.data);
+    });
   };
 
   const [isForIID, setIsForIID] = useState("");
@@ -502,15 +608,18 @@ function App() {
             <Button variant="outlined" size="small" onClick={addStore}>
               Add Store
             </Button>
-            {/* 
-          <div>
-          <button onClick={deleteStore}> Delete </button>
-          <input type="text" placeholder="SID..."
-            onChange={(event) => {
-              setSID(event.target.value);
-            }}/>
-          </div>
-        */}
+
+            <br></br>
+            <br></br>
+            <button onClick={deleteStore}> Delete </button>
+            <input
+              type="text"
+              placeholder="SID..."
+              onChange={(event) => {
+                setSID(event.target.value);
+              }}
+            />
+            <br></br>
             <br></br>
             <Button variant="outlined" size="small" onClick={listStores}>
               List Stores
@@ -528,6 +637,7 @@ function App() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -564,6 +674,26 @@ function App() {
               Add Works in Relation
             </Button>
             <br></br>
+            <br></br>
+
+            <button onClick={deleteWorksIn}> Delete </button>
+            <input
+              type="text"
+              placeholder="SID..."
+              onChange={(event) => {
+                setWorksInSID(event.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="EID..."
+              onChange={(event) => {
+                setWorksInEID(event.target.value);
+              }}
+            />
+
+            <br></br>
+            <br></br>
             <TextField
               label="Store ID"
               id="textfield"
@@ -574,21 +704,7 @@ function App() {
               }}
             />
 
-            {
-              /*
-              <div>
-                <button onClick={deleteWorksIn}> Delete </button>
-                <input type="text" placeholder="SID..."
-                  onChange={(event) => {
-                    setWorksInSID(event.target.value);
-                  }}/>
-                  <input type="text"placeholder="EID..."
-                    onChange={(event) => {
-                      setWorksInEID(event.target.value);
-                    }}/>
-                </div>
-              </div>
-       */}
+            <br></br>
             <Button variant="outlined" size="small" onClick={listEmpInStore}>
               List Employees in Store
             </Button>
@@ -596,6 +712,7 @@ function App() {
             {EmpListinStore.map((val, key) => {
               return (
                 <div>
+                  <p>SID: {val.SID}</p>
                   <p>EID: {val.EID}</p>
                 </div>
               );
@@ -660,6 +777,7 @@ function App() {
               Add Employee
             </Button>
             <br></br>
+            <br></br>
 
             <button onClick={updateEmployee}> Update Salary </button>
             <input
@@ -678,6 +796,7 @@ function App() {
             />
 
             <br></br>
+            <br></br>
             <button onClick={deleteEmployee}> Delete </button>
             <input
               type="text"
@@ -687,6 +806,7 @@ function App() {
               }}
             />
 
+            <br></br>
             <br></br>
             <Button variant="outlined" size="small" onClick={listEmployees}>
               List Employees
@@ -742,29 +862,37 @@ function App() {
               Add Animal Care
             </Button>
             <br></br>
+            <br></br>
 
-            {
-              /*        
-          <div>
-            <button onClick={updateSpecialty}> Update Specialty </button>
-            <input type="text" placeholder="EID..."
-            onChange={(event) => {
-              setNewSpecialtyEID(event.target.value);
-            }}/>
-            <input type="text" placeolder="Specialty"
-            onChange={(event) => {
-              setNewSpecialty(event.target.value);
-            }}/>
-          </div>
-
-          <div>
             <button onClick={deleteAnimalCare}> Delete </button>
-            <input type="text" placeholder="EID..."
+            <input
+              type="text"
+              placeholder="EID..."
               onChange={(event) => {
                 setCareEID(event.target.value);
-              }}/>
-          </div> */
-          }
+              }}
+            />
+            <br></br>
+            <br></br>
+
+            <button onClick={updateSpecialty}> Update Specialty </button>
+            <input
+              type="text"
+              placeholder="EID..."
+              onChange={(event) => {
+                setNewSpecialtyEID(event.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeolder="Specialty"
+              onChange={(event) => {
+                setNewSpecialty(event.target.value);
+              }}
+            />
+
+            <br></br>
+            <br></br>
 
             <TextField
               label="Speciality"
@@ -775,9 +903,19 @@ function App() {
                 setAnimalCareSpec_select(event.target.value);
               }}
             />
+            <br></br>
             <Button variant="outlined" size="small" onClick={listEmpSpeciality}>
               List Employees in with Speciality
             </Button>
+
+            {specialityList.map((val, key) => {
+              return (
+                <div>
+                  <p>EID: {val.EID}</p>
+                  <p>Speciality: {val.Specialty}</p>
+                </div>
+              );
+            })}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -861,6 +999,33 @@ function App() {
             >
               Delete
             </Button>
+
+            <br></br>
+            <br></br>
+
+            <Button variant="outlined" size="small" onClick={listPart_time}>
+              List Part Time Employees
+            </Button>
+
+            {part_timeList.map((val, key) => {
+              return (
+                <div>
+                  <p>EID: {val.EID}</p>
+                </div>
+              );
+            })}
+
+            <Button variant="outlined" size="small" onClick={listFull_time}>
+              List Full Time Employees
+            </Button>
+
+            {full_timeList.map((val, key) => {
+              return (
+                <div>
+                  <p>EID: {val.EID}</p>
+                </div>
+              );
+            })}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -932,7 +1097,10 @@ function App() {
               </div>
 
               <div>
-                <button onClick={updateShelvingLocation}> Update Shelving Location </button>
+                <button onClick={updateShelvingLocation}>
+                  {" "}
+                  Update Shelving Location{" "}
+                </button>
                 <input
                   type="text"
                   placeholder="MID..."
@@ -975,6 +1143,74 @@ function App() {
                 />
               </div>
             </div>
+
+            <br></br>
+            <br></br>
+
+            <TextField
+              label="SID"
+              id="textfield"
+              defaultValue=""
+              size="small"
+              onChange={(event) => {
+                setSID_merch_select(event.target.value);
+              }}
+            />
+
+            <br></br>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={listSID_merch}
+            >
+              List Merchandise in Store
+            </Button>
+
+            {SID_merch_list.map((val, key) => {
+              return (
+                <div>
+                  <p>MID: {val.MID}</p>
+                  <p>SID: {val.SID}</p>
+                  <p>Quantity in Stock: {val.In_Stock}</p>
+                  <p>Shelving Location: {val.Shelving_Location}</p>
+                </div>
+              );
+            })}
+
+            <br></br>
+            <br></br>
+
+            <TextField
+              label="MID"
+              id="textfield"
+              defaultValue=""
+              size="small"
+              onChange={(event) => {
+                setMID_store_select(event.target.value);
+              }}
+            />
+
+            <br></br>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={listMID_store}
+            >
+              List Stores with Merchandise
+            </Button>
+
+            {MID_store_list.map((val, key) => {
+              return (
+                <div>
+                  <p>MID: {val.MID}</p>
+                  <p>SID: {val.SID}</p>
+                  <p>Quantity in Stock: {val.In_Stock}</p>
+                  <p>Shelving Location: {val.Shelving_Location}</p>
+                </div>
+              );
+            })}
+
+
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1035,6 +1271,21 @@ function App() {
                 />
               </div>
             </div>
+
+            <br></br>
+
+            <Button variant="outlined" size="small" onClick={listMerch}>
+              List All Merchandise
+            </Button>
+
+            {merchList.map((val, key) => {
+              return (
+                <div>
+                  <p>MID: {val.MID}</p>
+                  <p>Price: {val.Price}</p>
+                </div>
+              );
+            })}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1180,6 +1431,26 @@ function App() {
                 />
               </div>
             </div>
+
+            <Button variant="outlined" size="small" onClick={listAnimals}>
+              List All Animals
+            </Button>
+
+            {animalList.map((val, key) => {
+              return (
+                <div>
+                  <p>AID: {val.AID}</p>
+                  <p>Hypoallergenic: {val.Hypoallergenic}</p>
+                  <p>Max Size: {val.The_Max_Size}</p>
+                  <p>Enclosure: {val.Enclosure_Type}</p>
+                  <p>Food: {val.Food}</p>
+                  <p>Species: {val.Species}</p>
+                  <p>Lifespan: {val.Lifespan}</p>
+                  <p>Care Guide: {val.Care_Guide}</p>
+                </div>
+              );
+            })}
+
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1221,6 +1492,19 @@ function App() {
                 />
               </div>
             </div>
+
+            <Button variant="outlined" size="small" onClick={listItems}>
+              List All Items
+            </Button>
+
+            {itemList.map((val, key) => {
+              return (
+                <div>
+                  <p>IID: {val.IID}</p>
+                  <p>Brand: {val.Brand}</p>
+                </div>
+              );
+            })}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1283,6 +1567,23 @@ function App() {
                 />
               </div>
             </div>
+
+            <Button variant="outlined" size="small" onClick={listFood}>
+              List All Food Items
+            </Button>
+
+            {foodList.map((val, key) => {
+              return (
+                <div>
+                  <p>IID: {val.IID}</p>
+                  <p>Brand: {val.Brand}</p>
+                  <p>Shelf Life: {val.Shelf_Life}</p>
+                  <p>Refrigeration (0 = no, 1 = yes): {val.Refrigeration}</p>
+                  <p>Alive (0 = no, 1 = yes): {val.Alive}</p>
+                </div>
+              );
+            })}
+
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1332,6 +1633,21 @@ function App() {
                 />
               </div>
             </div>
+
+            <Button variant="outlined" size="small" onClick={listEnclosure}>
+              List All Enclosures
+            </Button>
+
+            {enclosureList.map((val, key) => {
+              return (
+                <div>
+                  <p>IID: {val.IID}</p>
+                  <p>Brand: {val.Brand}</p>
+                  <p>Dimensions: {val.Dimensions}</p>
+                </div>
+              );
+            })}
+
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1387,6 +1703,22 @@ function App() {
                 />
               </div>
             </div>
+
+            <Button variant="outlined" size="small" onClick={listToys}>
+              List All Toys
+            </Button>
+
+            {toyList.map((val, key) => {
+              return (
+                <div>
+                  <p>IID: {val.IID}</p>
+                  <p>Brand: {val.Brand}</p>
+                  <p>Type: {val.The_Type}</p>
+                  <p>Chocking Hazard (0 = no, 1 = yes): {val.Chocking_Hazard}</p>
+                </div>
+              );
+            })}
+
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1426,11 +1758,15 @@ function App() {
                   placeholder="IID..."
                   onChange={(event) => {
                     setIsForIID(event.target.value);
-                  }}/>
-                  <input type="text" placeholder="AID..."
-                    onChange={(event) => {
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="AID..."
+                  onChange={(event) => {
                     setIsForAID(event.target.value);
-                  }}/>
+                  }}
+                />
               </div>
             </div>
           </Typography>

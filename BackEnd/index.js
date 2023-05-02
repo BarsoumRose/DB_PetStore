@@ -528,7 +528,7 @@ app.get("/listStores", (req, res) => {
 app.post('/listEmpInStore', (req,res) =>{
 const worksInSID_select = req.body.worksInSID_select;
 
-    db.query("SELECT works_in.EID FROM pet_store.works_in WHERE SID = (?)",[worksInSID_select],(err,result) => {
+    db.query("SELECT * FROM pet_store.works_in WHERE SID = (?)",[worksInSID_select],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -550,7 +550,7 @@ app.get("/listEmployees", (req, res) => {
 app.post('/listEmpSpeciality', (req,res) =>{
     const animalCareSpec_select = req.body.animalCareSpec_select;
 
-    db.query("SELECT animal_care.EID FROM pet_store.animal_care WHERE Specialty = (?)",[animalCareSpec_select],(err,result) => {
+    db.query("SELECT * FROM pet_store.animal_care WHERE Specialty = (?)",[animalCareSpec_select],(err,result) => {
         if(err) {
             console.log(err)
         } else {
@@ -558,6 +558,111 @@ app.post('/listEmpSpeciality', (req,res) =>{
         }
     })
 })
+
+app.get("/listPart_time", (req, res) => {
+    db.query("SELECT * FROM cashier_retail WHERE Part_Time_Full_Time = (?)",['1'], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.get("/listFull_time", (req, res) => {
+    db.query("SELECT * FROM cashier_retail WHERE Part_Time_Full_Time = (?)",['0'], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.get("/listMerch", (req, res) => {
+    db.query("SELECT * FROM merchandise", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.post('/listSID_merch', (req,res) =>{
+    const SID_merch_select = req.body.SID_merch_select;
+
+    db.query("SELECT * FROM sold_in WHERE SID = (?)",[SID_merch_select],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
+
+app.post('/listMID_store', (req,res) =>{
+    const MID_store_select = req.body.MID_store_select;
+
+    db.query("SELECT * FROM sold_in WHERE MID = (?)",[MID_store_select],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
+
+app.get("/listAnimals", (req, res) => {
+    db.query("SELECT * FROM animals", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.get("/listItems", (req, res) => {
+    db.query("SELECT * FROM Item", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.get("/listFood", (req, res) => {
+    db.query("SELECT * FROM food", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.get("/listEnclosure", (req, res) => {
+    db.query("SELECT * FROM enclosure", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.get("/listToys", (req, res) => {
+    db.query("SELECT * FROM toys", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
 
 app.listen(3001,() => {
     console.log("yay, your server is running on port 3001");
