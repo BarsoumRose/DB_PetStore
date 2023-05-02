@@ -349,6 +349,16 @@ function App() {
     );
   };
 
+  const [includeList, setIncludeList] = useState([]);
+
+  const listIncludes = () => {
+    Axios.get("http://localhost:3001/listIncludes", {}).then((response) => {
+      console.log(response);
+      console.log("listIncludes Success");
+      setIncludeList(response.data);
+    });
+  };
+
   const [hypoallergenic, setHypoallergenic] = useState(false);
   const [maxSize, setMaxSize] = useState(0);
   const [enclosureType, setEnclosureType] = useState("");
@@ -525,6 +535,21 @@ function App() {
     Axios.delete(`http://localhost:3001/deleteIsFor/${isForIID}/${isForAID}`);
   };
 
+  //List what items for given AID
+
+  const [isFor_select, set_isFor_select] = useState("");
+  const [isFor_list, set_isFor_list] = useState([]);
+
+  const listIsFor = () => {
+    Axios.post("http://localhost:3001/listIsFor", {
+      isFor_select: isFor_select,
+    }).then((response) => {
+      console.log("listIsFor success");
+      console.log(response);
+      set_isFor_list(response.data);
+    });
+  };
+
   const [compatibleAID, setCompatibleAID] = useState("");
 
   const addCompatibleWith = () => {
@@ -557,6 +582,20 @@ function App() {
     Axios.delete(
       `http://localhost:3001/deleteIsQualified/${qualifiedAID}/${AnimalCareID}`
     );
+  };
+
+  //is who is qualified given AID
+  const [isQualified_select, set_isQualified_select] = useState("");
+  const [isQualified_list, set_isQualified_list] = useState([]);
+
+  const listIsQualified = () => {
+    Axios.post("http://localhost:3001/listIsQualified", {
+      isQualified_select: isQualified_select,
+    }).then((response) => {
+      console.log("listIsQualified success");
+      console.log(response);
+      set_isQualified_list(response.data);
+    });
   };
 
   /*const displayInfo = () => {
@@ -1158,11 +1197,7 @@ function App() {
             />
 
             <br></br>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={listSID_merch}
-            >
+            <Button variant="outlined" size="small" onClick={listSID_merch}>
               List Merchandise in Store
             </Button>
 
@@ -1191,11 +1226,7 @@ function App() {
             />
 
             <br></br>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={listMID_store}
-            >
+            <Button variant="outlined" size="small" onClick={listMID_store}>
               List Stores with Merchandise
             </Button>
 
@@ -1209,8 +1240,6 @@ function App() {
                 </div>
               );
             })}
-
-
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1348,6 +1377,21 @@ function App() {
                 />
               </div>
             </div>
+
+            <Button variant="outlined" size="small" onClick={listIncludes}>
+              List All Includes Relations
+            </Button>
+
+            {includeList.map((val, key) => {
+              return (
+                <div>
+                  <p>MID: {val.MID}</p>
+                  <p>IID: {val.IID}</p>
+                  <p>AID: {val.AID}</p>
+                  <br></br>
+                </div>
+              );
+            })}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1450,7 +1494,6 @@ function App() {
                 </div>
               );
             })}
-
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1583,7 +1626,6 @@ function App() {
                 </div>
               );
             })}
-
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1647,7 +1689,6 @@ function App() {
                 </div>
               );
             })}
-
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1714,11 +1755,12 @@ function App() {
                   <p>IID: {val.IID}</p>
                   <p>Brand: {val.Brand}</p>
                   <p>Type: {val.The_Type}</p>
-                  <p>Chocking Hazard (0 = no, 1 = yes): {val.Chocking_Hazard}</p>
+                  <p>
+                    Chocking Hazard (0 = no, 1 = yes): {val.Chocking_Hazard}
+                  </p>
                 </div>
               );
             })}
-
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1769,6 +1811,35 @@ function App() {
                 />
               </div>
             </div>
+
+            <br></br>
+            <br></br>
+
+            <TextField
+              label="AID"
+              id="textfield"
+              defaultValue=""
+              size="small"
+              onChange={(event) => {
+                set_isFor_select(event.target.value);
+              }}
+            />
+
+            <br></br>
+            <Button variant="outlined" size="small" onClick={listIsFor}>
+              List items for given AID
+            </Button>
+
+            {isFor_list.map((val, key) => {
+              return (
+                <div>
+                  <p>IID: {val.IID}</p>
+                  <p>AID: {val.AID}</p>
+                  <br></br>
+                </div>
+              );
+            })}
+
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -1859,6 +1930,34 @@ function App() {
                 />
               </div>
             </div>
+
+            <br></br>
+            <br></br>
+
+            <TextField
+              label="AID"
+              id="textfield"
+              defaultValue=""
+              size="small"
+              onChange={(event) => {
+                set_isQualified_select(event.target.value);
+              }}
+            />
+
+            <br></br>
+            <Button variant="outlined" size="small" onClick={listIsQualified}>
+              List employees qualified for given AID
+            </Button>
+
+            {isQualified_list.map((val, key) => {
+              return (
+                <div>
+                  <p>AID: {val.AID}</p>
+                  <p>EID: {val.AnimalCareID}</p>
+                  <br></br>
+                </div>
+              );
+            })}
           </Typography>
         </AccordionDetails>
       </Accordion>

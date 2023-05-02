@@ -121,6 +121,7 @@ app.post('/createAnimalCare', (req,res) =>{
 //TODO: add update function for animal Care relation Specialty
 app.put('/updateSpecialty',(req,res) => {
     const specialty = req.body.specialty;
+    const id = req.body.id;
     db.query("UPDATE Animal_Care SET Specialty = ? WHERE EID = ?", [specialty,id],(err,result) => {
         if(err) {
             console.log(err)
@@ -662,6 +663,39 @@ app.get("/listAnimals", (req, res) => {
     });
   });
 
+  app.get("/listIncludes", (req, res) => {
+    db.query("SELECT * FROM includes", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.post('/listIsFor', (req,res) =>{
+    const isFor_select = req.body.isFor_select;
+
+    db.query("SELECT * FROM is_for WHERE AID = (?)",[isFor_select],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
+
+app.post('/listIsQualified', (req,res) =>{
+    const isQualified_select = req.body.isQualified_select;
+
+    db.query("SELECT * FROM is_qualified WHERE AID = (?)",[isQualified_select],(err,result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        }
+    })
+})
 
 app.listen(3001,() => {
     console.log("yay, your server is running on port 3001");
