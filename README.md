@@ -1,5 +1,5 @@
 # DB_PetStore
-# Setting up MySQL database
+# Setting up MySQL Database
 
 To access the database for our project, please download mySQL, community development edition. Create a database and remeber the user and password for it. 
 
@@ -7,7 +7,7 @@ create a schema called pet_store
 
 Once a schema is created, you can copy and paste our PetStore.sql file into a schema worksheet and run the worksheet. This will create all our tables. 
 
-# Installing packages 
+# Installing Packages 
 To run our project, please install node.js This can be accessed here [https://nodejs.org/en/download]
 once node.js is downloaded, our project can be openned in an IDE such as VScode. 
 
@@ -25,7 +25,7 @@ the following commands should be run:
 
 `npm install @mui/icons-material`
 
-# Setting Up the Datbase connection
+# Setting Up the Database Connection
 using your database information from earlier, go to the index.js file in the BackEnd foler. 
 Replace the information on lines 10-13 with your information.
 
