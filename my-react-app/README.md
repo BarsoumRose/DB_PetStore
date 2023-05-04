@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Setting up MySQL database
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To access the database for our project, please download mySQL, community development edition. Create a database and remeber the user and password for it. 
 
-## Available Scripts
+create a schema called pet_store
 
-In the project directory, you can run:
+Once a schema is created, you can copy and paste our PetStore.sql file into a schema worksheet and run the worksheet. This will create all our tables. 
 
-### `npm start`
+# Installing packages 
+To run our project, please install node.js This can be accessed here [https://nodejs.org/en/download]
+once node.js is downloaded, our project can be openned in an IDE such as VScode. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+the following commands should be run:
+
+`npm install react`
+
+`npm install cors`
+
+`npm install express`
+
+`npm install axios`
+
+`npm install @mui/material @emotion/react @emotion/styled`
+
+`npm install @mui/icons-material`
+
+# Setting Up the Datbase connection
+using your database information from earlier, go to the index.js file in the BackEnd foler. 
+Replace the information on lines 10-13 with your information.
+
+# Running Our Project
+Open two terminals in VScode. 
+in one terminal, cd to my-react-app\src and run the following command:
+`npm start`
+
+this will start the react app. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+in the other terminal, cd to \BackEnd and run the following command:
+`node index.js`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+this will start the server and you should also see the followng message if the server is run correctly:
+"yay, your server is running on port 3001"
 
-### `npm run build`
+# To Stop Project 
+in both of the open terminals, ^C to close the react project and the server.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Using Our Project 
+After completing the above steps, you may Add, Delete, Update, and Select from our frontend react project. Changes can be viewed and verified through the MySQL application and database that you downloaded. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Thank you! Enjoy :)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
